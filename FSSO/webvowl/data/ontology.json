@@ -1,0 +1,1907 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://www.w3.org/2000/01/rdf-schema", "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology", "http://www.w3.org/2001/XMLSchema" ],
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "comments" : {
+      "en" : "FSSO: An ontology for Flight Satisfaction Surveys."
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "9",
+    "type" : "owl:Class"
+  }, {
+    "id" : "13",
+    "type" : "owl:Class"
+  }, {
+    "id" : "26",
+    "type" : "owl:Class"
+  }, {
+    "id" : "12",
+    "type" : "owl:Class"
+  }, {
+    "id" : "7",
+    "type" : "owl:Class"
+  }, {
+    "id" : "20",
+    "type" : "owl:Class"
+  }, {
+    "id" : "39",
+    "type" : "owl:Class"
+  }, {
+    "id" : "49",
+    "type" : "owl:Class"
+  }, {
+    "id" : "10",
+    "type" : "owl:Class"
+  }, {
+    "id" : "57",
+    "type" : "owl:Class"
+  }, {
+    "id" : "8",
+    "type" : "owl:Class"
+  }, {
+    "id" : "2",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "66",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "67",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "45",
+    "type" : "owl:Class"
+  }, {
+    "id" : "68",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "62",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "70",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "56",
+    "type" : "owl:Class"
+  }, {
+    "id" : "71",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "5",
+    "type" : "owl:Class"
+  }, {
+    "id" : "65",
+    "type" : "owl:Class"
+  }, {
+    "id" : "74",
+    "type" : "owl:Class"
+  }, {
+    "id" : "60",
+    "type" : "owl:Class"
+  }, {
+    "id" : "86",
+    "type" : "owl:Class"
+  }, {
+    "id" : "34",
+    "type" : "owl:Class"
+  }, {
+    "id" : "32",
+    "type" : "owl:intersectionOf"
+  }, {
+    "id" : "88",
+    "type" : "owl:Class"
+  }, {
+    "id" : "15",
+    "type" : "owl:Class"
+  }, {
+    "id" : "91",
+    "type" : "owl:Class"
+  }, {
+    "id" : "58",
+    "type" : "owl:Class"
+  }, {
+    "id" : "115",
+    "type" : "owl:intersectionOf"
+  }, {
+    "id" : "17",
+    "type" : "owl:Class"
+  }, {
+    "id" : "102",
+    "type" : "owl:Class"
+  }, {
+    "id" : "55",
+    "type" : "owl:Class"
+  }, {
+    "id" : "23",
+    "type" : "owl:Class"
+  }, {
+    "id" : "125",
+    "type" : "owl:intersectionOf"
+  }, {
+    "id" : "19",
+    "type" : "owl:Class"
+  }, {
+    "id" : "31",
+    "type" : "owl:intersectionOf"
+  }, {
+    "id" : "107",
+    "type" : "owl:Class"
+  }, {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "4",
+    "type" : "owl:Class"
+  }, {
+    "id" : "59",
+    "type" : "owl:Class"
+  }, {
+    "id" : "75",
+    "type" : "owl:Class"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Solo_Leisure",
+      "undefined" : "Solo leisure"
+    },
+    "comment" : {
+      "en" : "This class represents leisure travel undertaken by a single person."
+    },
+    "attributes" : [ "external" ],
+    "id" : "9",
+    "superClasses" : [ "10" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Country",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "annotations" : {
+      "sameAs" : [ {
+        "identifier" : "sameAs",
+        "language" : "undefined",
+        "value" : "https://dbpedia.org/page/Country",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Country",
+      "undefined" : "Country"
+    },
+    "comment" : {
+      "en" : "This class represents a sovereign nation."
+    },
+    "attributes" : [ "external" ],
+    "id" : "13"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "annotations" : {
+      "sameAs" : [ {
+        "identifier" : "sameAs",
+        "language" : "undefined",
+        "value" : "https://dbpedia.org/page/Airline",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Airline",
+      "undefined" : "Airline"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Qatar_Airlines",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Qatar_Airlines"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ryanair",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Ryanair"
+      }
+    } ],
+    "comment" : {
+      "en" : "This class represents a company that provides commercial air transportation services."
+    },
+    "attributes" : [ "external" ],
+    "id" : "26"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Person",
+      "undefined" : "Person"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person02",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Person02"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Person01"
+      }
+    } ],
+    "comment" : {
+      "en" : "This class represents a person."
+    },
+    "attributes" : [ "external" ],
+    "id" : "12"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Flight",
+      "undefined" : "Flight"
+    },
+    "subClasses" : [ "31", "32" ],
+    "comment" : {
+      "en" : "This class represents a specific instance of an airplane traveling between two airports."
+    },
+    "attributes" : [ "external" ],
+    "id" : "7"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Wifi_Connectivity_Rating",
+      "undefined" : "Wifi and Connectivity Rating"
+    },
+    "comment" : {
+      "en" : "This class represents an evaluation score given by a user for the services aof Wifi and Connectivity."
+    },
+    "attributes" : [ "external" ],
+    "id" : "20",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Food_Beverages_Rating",
+      "undefined" : "Food and Beverages Rating"
+    },
+    "comment" : {
+      "en" : "This class represents an evaluation score given by a user for the food and beverage."
+    },
+    "attributes" : [ "external" ],
+    "id" : "39",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Family_Leisure",
+      "undefined" : "Family Leisure"
+    },
+    "comment" : {
+      "en" : "This class represents leisure travel undertaken by a family group."
+    },
+    "attributes" : [ "external" ],
+    "id" : "49",
+    "superClasses" : [ "10" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Leisure",
+      "undefined" : "Leisure"
+    },
+    "subClasses" : [ "9", "49", "56" ],
+    "comment" : {
+      "en" : "This class represents travel undertaken for recreational purposes."
+    },
+    "attributes" : [ "external" ],
+    "id" : "10",
+    "superClasses" : [ "55" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Satisfaction_Leveled_Review",
+      "undefined" : "Satisfaction Leveled Review"
+    },
+    "subClasses" : [ "58", "59", "60" ],
+    "comment" : {
+      "undefined" : "This class represents a review with a leveled sentiment about the flight experience."
+    },
+    "attributes" : [ "external" ],
+    "id" : "57",
+    "superClasses" : [ "15" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "annotations" : {
+      "sameAs" : [ {
+        "identifier" : "sameAs",
+        "language" : "undefined",
+        "value" : "https://dbpedia.org/page/Aircraft",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Aircraft",
+      "undefined" : "Aircraft"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_777",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Boeing_777"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_737",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Boeing_737"
+      }
+    } ],
+    "comment" : {
+      "en" : "This class represents an airplane used for passenger transportation."
+    },
+    "attributes" : [ "external" ],
+    "id" : "8"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#integer",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "2",
+    "label" : {
+      "IRI-based" : "integer"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "66",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "67",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Cabin_Staff_Service_Rating",
+      "undefined" : "Cabin Staff Service Rating"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/CabinRating7",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "CabinRating7"
+      }
+    } ],
+    "comment" : {
+      "en" : "This class represents an evaluation score given by a user for the cabin staff service."
+    },
+    "attributes" : [ "external" ],
+    "id" : "45",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "68",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "62",
+    "label" : {
+      "IRI-based" : "dateTime"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "70",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Couple_Leisure",
+      "undefined" : "Couple Leisure"
+    },
+    "comment" : {
+      "en" : "This class represents leisure travel undertaken by a couple."
+    },
+    "attributes" : [ "external" ],
+    "id" : "56",
+    "superClasses" : [ "10" ]
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "71",
+    "label" : {
+      "IRI-based" : "dateTime"
+    }
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Value_For_Money_Rating",
+      "undefined" : "Value for Money Rating"
+    },
+    "comment" : {
+      "en" : "This class represents an evaluation score given by a user for the value for money of the service."
+    },
+    "attributes" : [ "external" ],
+    "id" : "5",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Flight_Reservation",
+      "undefined" : "Flight Reservation"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation1",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Reservation1"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation2",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Reservation2"
+      }
+    } ],
+    "comment" : {
+      "en" : "This class represents a reservation for a seat on a specific flight."
+    },
+    "attributes" : [ "external" ],
+    "id" : "65"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Business_Class_Seat",
+      "undefined" : "Business Class Seat"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BusinessSeat1",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "BusinessSeat1"
+      }
+    } ],
+    "comment" : {
+      "en" : "This class represents a seat in the business class section of an aircraft."
+    },
+    "attributes" : [ "external" ],
+    "id" : "74",
+    "superClasses" : [ "75" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Neutral_Review",
+      "undefined" : "Neutral Review"
+    },
+    "comment" : {
+      "en" : "This class represents a review that expresses a neutral sentiment about the flight experience."
+    },
+    "attributes" : [ "external" ],
+    "id" : "60",
+    "superClasses" : [ "57" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Premium_Economy_Class_Seat",
+      "undefined" : "Premium Economy Class Seat"
+    },
+    "comment" : {
+      "en" : "This class represents a seat in the premium economy class section of an aircraft"
+    },
+    "attributes" : [ "external" ],
+    "id" : "86",
+    "superClasses" : [ "75" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "annotations" : {
+      "sameAs" : [ {
+        "identifier" : "sameAs",
+        "language" : "undefined",
+        "value" : "https://dbpedia.org/page/Airport",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Airport",
+      "undefined" : "Airport"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/LHR",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "LHR"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/NRT",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "NRT"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/STN",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "STN"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BCN",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "BCN"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/DOH",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "DOH"
+      }
+    } ],
+    "comment" : {
+      "en" : "This class represents a facility designed for the takeoff and landing of aircraft."
+    },
+    "attributes" : [ "external" ],
+    "id" : "34"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Direct_Flight",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Direct_Flight",
+      "undefined" : "Direct Flight"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "FR001"
+      }
+    } ],
+    "intersection" : [ "7" ],
+    "comment" : {
+      "en" : "This class represents a flight with no stops."
+    },
+    "attributes" : [ "intersection", "external" ],
+    "id" : "32",
+    "superClasses" : [ "7" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Economy_Class_Seat",
+      "undefined" : "Economy Class Seat"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/EconomySeat2",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "EconomySeat2"
+      }
+    } ],
+    "comment" : {
+      "en" : "This class represents a seat in the economy class section of an aircraft."
+    },
+    "attributes" : [ "external" ],
+    "id" : "88",
+    "superClasses" : [ "75" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Review",
+      "undefined" : "Review"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review02",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Review02"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review03",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Review03"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review01",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "Review01"
+      }
+    } ],
+    "subClasses" : [ "107", "57" ],
+    "comment" : {
+      "en" : "This class represents a written evaluation of the service."
+    },
+    "attributes" : [ "external" ],
+    "id" : "15"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "First_Class_Seat",
+      "undefined" : "First Class Seat"
+    },
+    "comment" : {
+      "en" : "This class represents a seat in the first class section of an aircraft."
+    },
+    "attributes" : [ "external" ],
+    "id" : "91",
+    "superClasses" : [ "75" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Positive_Review",
+      "undefined" : "Positive Review"
+    },
+    "comment" : {
+      "en" : "This class represents a review that expresses a positive sentiment about the flight experience."
+    },
+    "attributes" : [ "external" ],
+    "id" : "58",
+    "superClasses" : [ "57" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Passenger",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Passenger",
+      "undefined" : "Passenger"
+    },
+    "intersection" : [ "12" ],
+    "comment" : {
+      "en" : "This class represents a person traveling on a flight."
+    },
+    "attributes" : [ "intersection", "external" ],
+    "id" : "115"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Seat_Comfort_Rating",
+      "undefined" : "Seat Comfort Rating"
+    },
+    "comment" : {
+      "en" : "This class represents an evaluation score given by a user for the seat comfort."
+    },
+    "attributes" : [ "external" ],
+    "id" : "17",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Bussiness",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Bussiness",
+      "undefined" : "Bussiness"
+    },
+    "comment" : {
+      "en" : "This class represents travel undertaken for professional or work-related purposes."
+    },
+    "attributes" : [ "external" ],
+    "id" : "102",
+    "superClasses" : [ "55" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Purpose_Of_Travel",
+      "undefined" : "Purpose of trave"
+    },
+    "subClasses" : [ "102", "10" ],
+    "comment" : {
+      "en" : "This class represents the overall reason for a passenger's reservation."
+    },
+    "attributes" : [ "external" ],
+    "id" : "55"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Ground_Service_Rating",
+      "undefined" : "Ground Service Rating"
+    },
+    "comment" : {
+      "en" : "This class represents an evaluation score given by a user for the ground services."
+    },
+    "attributes" : [ "external" ],
+    "id" : "23",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reviewer",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Reviewer",
+      "undefined" : "Reviewer"
+    },
+    "intersection" : [ "12" ],
+    "comment" : {
+      "en" : "This class represents a person authoring a review."
+    },
+    "attributes" : [ "intersection", "external" ],
+    "id" : "125"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Inflight_Entertainment_Rating",
+      "undefined" : "Inflight Entertainment Rating"
+    },
+    "comment" : {
+      "en" : "This class represents an evaluation score given by a user for the inflight entertainment."
+    },
+    "attributes" : [ "external" ],
+    "id" : "19",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/With_Stopovers_Flight",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "With_Stopovers_Flight",
+      "undefined" : "Flight with stopovers"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "QR01"
+      }
+    } ],
+    "intersection" : [ "7" ],
+    "comment" : {
+      "en" : "This class represents a flight with stops."
+    },
+    "attributes" : [ "intersection", "external" ],
+    "id" : "31",
+    "superClasses" : [ "7" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Verified_Review",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Verified_Review",
+      "undefined" : "Verified Review"
+    },
+    "comment" : {
+      "en" : "This class represents a review that has been verified to be from a legitimate customer who has used the service."
+    },
+    "attributes" : [ "external" ],
+    "id" : "107",
+    "superClasses" : [ "15" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Rating",
+      "undefined" : "Rating"
+    },
+    "subClasses" : [ "5", "39", "23", "4", "45", "20", "19", "17" ],
+    "comment" : {
+      "en" : "This class represents an evaluation score given by a user."
+    },
+    "attributes" : [ "external" ],
+    "id" : "1"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Overall_Rating",
+      "undefined" : "Overall Rating"
+    },
+    "individuals" : [ {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating8",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "OverallRating8"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating4",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "OverallRating4"
+      }
+    }, {
+      "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating6",
+      "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+      "labels" : {
+        "IRI-based" : "OverallRating6"
+      }
+    } ],
+    "comment" : {
+      "en" : "This class represents an evaluation score given by a user for the overall flight experience."
+    },
+    "attributes" : [ "external" ],
+    "id" : "4",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Negative_Review",
+      "undefined" : "Negative Review"
+    },
+    "comment" : {
+      "en" : "This class represents a review that expresses a negative sentiment about the flight experience."
+    },
+    "attributes" : [ "external" ],
+    "id" : "59",
+    "superClasses" : [ "57" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Seat",
+      "undefined" : "Seat"
+    },
+    "subClasses" : [ "91", "88", "86", "74" ],
+    "comment" : {
+      "en" : "This class represents a specific seat reserverved."
+    },
+    "attributes" : [ "external" ],
+    "id" : "75"
+  } ],
+  "property" : [ {
+    "id" : "0",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "3",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "6",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "11",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "14",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "16",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "18",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "21",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "22",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "24",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "25",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "27",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "28",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "29",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "30",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "33",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "38",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "40",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "41",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "42",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "43",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "44",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "46",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "47",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "48",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "37",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "50",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "51",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "52",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "53",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "54",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "61",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "63",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "64",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "69",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "72",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "73",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "76",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "77",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "78",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "79",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "80",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "81",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "82",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "83",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "84",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "85",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "87",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "89",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "90",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "92",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "93",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "94",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "95",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "96",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "97",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "98",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "99",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "100",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "101",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "103",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "104",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "105",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "106",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "108",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "35",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "109",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "110",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "111",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "112",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "113",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "114",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "116",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "117",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "118",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "119",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "120",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "121",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "122",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "123",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "124",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "126",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "127",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "128",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "129",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "130",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "131",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "132",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "133",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "134",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "135",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "36",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "136",
+    "type" : "owl:objectProperty"
+  } ],
+  "propertyAttribute" : [ {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "2",
+    "label" : {
+      "IRI-based" : "has_ratingValue",
+      "undefined" : "has_ratingValue"
+    },
+    "cardinality" : "1",
+    "domain" : "1",
+    "comment" : {
+      "en" : "This property represents the numerical value of the rating for a certain sevice."
+    },
+    "attributes" : [ "datatype", "functional", "external" ],
+    "id" : "0"
+  }, {
+    "range" : "5",
+    "domain" : "4",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "3"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "8",
+    "label" : {
+      "IRI-based" : "has_vehicle",
+      "undefined" : "has_vehicle"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "This property links a flight with an aircraft"
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "6"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_living_in",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "13",
+    "label" : {
+      "IRI-based" : "is_living_in",
+      "undefined" : "is_living_in"
+    },
+    "domain" : "12",
+    "comment" : {
+      "en" : "This property links a person with its residence country"
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "11"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "has_itemReviewed",
+      "undefined" : "has_itemReviewed"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "This property links a review to the specific flight it evaluates."
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "14"
+  }, {
+    "range" : "17",
+    "domain" : "4",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "16"
+  }, {
+    "range" : "20",
+    "domain" : "19",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "18"
+  }, {
+    "range" : "4",
+    "domain" : "19",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "21"
+  }, {
+    "range" : "20",
+    "domain" : "23",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "22"
+  }, {
+    "range" : "5",
+    "domain" : "19",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "24"
+  }, {
+    "range" : "17",
+    "domain" : "19",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "25"
+  }, {
+    "range" : "4",
+    "domain" : "23",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "27"
+  }, {
+    "range" : "19",
+    "domain" : "23",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "28"
+  }, {
+    "range" : "5",
+    "domain" : "23",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "29"
+  }, {
+    "range" : "17",
+    "domain" : "23",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "30"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "has_airport",
+      "undefined" : "has_airport"
+    },
+    "domain" : "7",
+    "subproperty" : [ "35", "36", "37" ],
+    "comment" : {
+      "en" : "This property links a flight to an airport."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "33"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "is_travelling_with",
+      "undefined" : "is_travelling_with"
+    },
+    "domain" : "12",
+    "comment" : {
+      "en" : "This property links a person to a flight through a reservation."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "38"
+  }, {
+    "range" : "5",
+    "domain" : "39",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "40"
+  }, {
+    "range" : "17",
+    "domain" : "39",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "41"
+  }, {
+    "range" : "20",
+    "domain" : "39",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "42"
+  }, {
+    "range" : "23",
+    "domain" : "39",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "43"
+  }, {
+    "range" : "20",
+    "domain" : "45",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "44"
+  }, {
+    "range" : "4",
+    "domain" : "39",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "46"
+  }, {
+    "range" : "19",
+    "domain" : "39",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "47"
+  }, {
+    "range" : "4",
+    "domain" : "45",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "48"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "has_arrivalAirport",
+      "undefined" : "has_arrivalAirport"
+    },
+    "superproperty" : [ "33" ],
+    "domain" : "7",
+    "comment" : {
+      "en" : "This property links a flight to its arrival airport."
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "37"
+  }, {
+    "range" : "5",
+    "domain" : "45",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "50"
+  }, {
+    "range" : "17",
+    "domain" : "45",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "51"
+  }, {
+    "range" : "7",
+    "domain" : "31",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "52"
+  }, {
+    "range" : "10",
+    "domain" : "9",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "53"
+  }, {
+    "range" : "7",
+    "domain" : "32",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "54"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "62",
+    "label" : {
+      "IRI-based" : "has_arrivalDate",
+      "undefined" : "has_arrivalDate"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "This property represents the scheduled arrival date of a flight."
+    },
+    "attributes" : [ "datatype", "functional", "external" ],
+    "id" : "61"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "15",
+    "label" : {
+      "IRI-based" : "is_author_of",
+      "undefined" : "is_author_of"
+    },
+    "domain" : "12",
+    "comment" : {
+      "en" : "This property links a person with the review which authored."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "63"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "has_reservation_for",
+      "undefined" : "has_reservation_for"
+    },
+    "domain" : "65",
+    "comment" : {
+      "en" : "This property links the flight reservation with the flight."
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "64"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author",
+    "inverse" : "63",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "12",
+    "label" : {
+      "IRI-based" : "has_author",
+      "undefined" : "has_author"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "This property links a review to the person who wrote it."
+    },
+    "attributes" : [ "object", "functional", "someValues", "external", "asymmetric" ],
+    "id" : "69"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "has_itemReviewed",
+      "undefined" : "has_itemReviewed"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "This property links a review to the specific flight it evaluates."
+    },
+    "attributes" : [ "object", "functional", "someValues", "external", "asymmetric" ],
+    "id" : "72"
+  }, {
+    "range" : "58",
+    "domain" : "60",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "73"
+  }, {
+    "range" : "58",
+    "domain" : "59",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "76"
+  }, {
+    "range" : "9",
+    "domain" : "56",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "77"
+  }, {
+    "range" : "49",
+    "domain" : "56",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "78"
+  }, {
+    "range" : "60",
+    "domain" : "59",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "79"
+  }, {
+    "range" : "9",
+    "domain" : "49",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "80"
+  }, {
+    "range" : "5",
+    "domain" : "17",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "81"
+  }, {
+    "range" : "20",
+    "domain" : "4",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "82"
+  }, {
+    "range" : "20",
+    "domain" : "5",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "83"
+  }, {
+    "range" : "20",
+    "domain" : "17",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "84"
+  }, {
+    "range" : "75",
+    "domain" : "86",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "85"
+  }, {
+    "range" : "75",
+    "domain" : "88",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "87"
+  }, {
+    "range" : "75",
+    "domain" : "74",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "89"
+  }, {
+    "range" : "75",
+    "domain" : "91",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "90"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "26",
+    "label" : {
+      "IRI-based" : "has_provider",
+      "undefined" : "has_provider"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "This property links a flight to the airline that provides the service."
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "92"
+  }, {
+    "range" : "1",
+    "domain" : "17",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "93"
+  }, {
+    "range" : "1",
+    "domain" : "19",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "94"
+  }, {
+    "range" : "1",
+    "domain" : "4",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "95"
+  }, {
+    "range" : "1",
+    "domain" : "23",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "96"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewBody",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "68",
+    "label" : {
+      "IRI-based" : "has_reviewBody",
+      "undefined" : "has_reviewBody"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "This property represents the text content of the review body."
+    },
+    "attributes" : [ "datatype", "functional", "external" ],
+    "id" : "97"
+  }, {
+    "range" : "1",
+    "domain" : "20",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "98"
+  }, {
+    "range" : "1",
+    "domain" : "45",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "99"
+  }, {
+    "range" : "55",
+    "domain" : "10",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "100"
+  }, {
+    "range" : "55",
+    "domain" : "102",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "101"
+  }, {
+    "range" : "1",
+    "domain" : "39",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "103"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_vehicle_of",
+    "inverse" : "6",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "is_vehicle_of",
+      "undefined" : "is_vehicle_of"
+    },
+    "domain" : "8",
+    "comment" : {
+      "en" : "This property links an aircraft with a flight."
+    },
+    "attributes" : [ "object" ],
+    "id" : "104"
+  }, {
+    "range" : "1",
+    "domain" : "5",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "105"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_provider_of",
+    "inverse" : "92",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "7",
+    "label" : {
+      "IRI-based" : "is_provider_of",
+      "undefined" : "is_provider_of"
+    },
+    "domain" : "26",
+    "comment" : {
+      "en" : "This property links an airline to the flight it is providing the service."
+    },
+    "attributes" : [ "object" ],
+    "id" : "106"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_personName",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "66",
+    "label" : {
+      "IRI-based" : "has_personName",
+      "undefined" : "has_personName"
+    },
+    "domain" : "12",
+    "comment" : {
+      "en" : "This property represents a person name."
+    },
+    "attributes" : [ "datatype", "functional", "external" ],
+    "id" : "108"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "has_departureAirport",
+      "undefined" : "has_departureAirport"
+    },
+    "superproperty" : [ "33" ],
+    "domain" : "7",
+    "comment" : {
+      "en" : "This property links a flight to its departure airport."
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "35"
+  }, {
+    "range" : "15",
+    "domain" : "107",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "109"
+  }, {
+    "range" : "57",
+    "domain" : "60",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "110"
+  }, {
+    "range" : "15",
+    "domain" : "57",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "111"
+  }, {
+    "range" : "10",
+    "domain" : "56",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "112"
+  }, {
+    "range" : "10",
+    "domain" : "49",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "113"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "71",
+    "label" : {
+      "IRI-based" : "has_departureDate",
+      "undefined" : "has_departureDate"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "This property represents the scheduled departure date of a flight."
+    },
+    "attributes" : [ "datatype", "functional", "external" ],
+    "id" : "114"
+  }, {
+    "range" : "57",
+    "domain" : "59",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "116"
+  }, {
+    "range" : "57",
+    "domain" : "58",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "117"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewTitle",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "67",
+    "label" : {
+      "IRI-based" : "has_reviewTitle",
+      "undefined" : "has_reviewTitle"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "This property represents the title of the review."
+    },
+    "attributes" : [ "datatype", "functional", "external" ],
+    "id" : "118"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "75",
+    "label" : {
+      "IRI-based" : "has_seatReserved",
+      "undefined" : "has_seatReserved"
+    },
+    "domain" : "65",
+    "comment" : {
+      "en" : "This property links a flight reservation to the seat that is reserved."
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "119"
+  }, {
+    "range" : "86",
+    "domain" : "74",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "120"
+  }, {
+    "range" : "91",
+    "domain" : "88",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "121"
+  }, {
+    "range" : "86",
+    "domain" : "88",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "122"
+  }, {
+    "range" : "86",
+    "domain" : "91",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "123"
+  }, {
+    "range" : "10",
+    "domain" : "102",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "124"
+  }, {
+    "range" : "39",
+    "domain" : "45",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "126"
+  }, {
+    "range" : "23",
+    "domain" : "45",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "127"
+  }, {
+    "range" : "19",
+    "domain" : "45",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "128"
+  }, {
+    "range" : "88",
+    "domain" : "74",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "129"
+  }, {
+    "range" : "91",
+    "domain" : "74",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "130"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "has_flightNumber",
+      "undefined" : "has_flightNumber"
+    },
+    "domain" : "7",
+    "comment" : {
+      "en" : "This property represents the unique identifier of a flight."
+    },
+    "attributes" : [ "datatype", "functional", "external" ],
+    "id" : "131"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "1",
+    "label" : {
+      "IRI-based" : "has_rating",
+      "undefined" : "has_rating"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "This property links a review to its rating for a flight service."
+    },
+    "attributes" : [ "object", "functional", "external" ],
+    "id" : "132"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author",
+    "inverse" : "63",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "12",
+    "label" : {
+      "IRI-based" : "has_author",
+      "undefined" : "has_author"
+    },
+    "domain" : "15",
+    "comment" : {
+      "en" : "This property links a review to the person who wrote it."
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "133"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#has_passenger",
+    "inverse" : "38",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "12",
+    "label" : {
+      "IRI-based" : "has_passenger",
+      "undefined" : "has_passenger"
+    },
+    "domain" : "7",
+    "comment" : {
+      "undefined" : "This property links a flight to a person through a reservation."
+    },
+    "attributes" : [ "object" ],
+    "id" : "134"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_purpose",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "55",
+    "label" : {
+      "IRI-based" : "has_purpose",
+      "undefined" : "has_purpose"
+    },
+    "domain" : "65",
+    "comment" : {
+      "en" : "This property links a flight reservation to the purpose of travel for the passenger."
+    },
+    "attributes" : [ "object", "functional", "external", "asymmetric" ],
+    "id" : "135"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "34",
+    "label" : {
+      "IRI-based" : "has_stopoverAirport",
+      "undefined" : "has_stopoverAirport"
+    },
+    "superproperty" : [ "33" ],
+    "domain" : "7",
+    "comment" : {
+      "en" : "This property links a flight to any stopover airports it has during the journey."
+    },
+    "attributes" : [ "object", "external", "asymmetric" ],
+    "id" : "36"
+  }, {
+    "iri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged",
+    "baseIri" : "http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology",
+    "range" : "65",
+    "label" : {
+      "IRI-based" : "has_arranged",
+      "undefined" : "has_arranged"
+    },
+    "domain" : "12",
+    "comment" : {
+      "en" : "This property links a reservation to the person that arranged it."
+    },
+    "attributes" : [ "inverse functional", "object", "external" ],
+    "id" : "136"
+  } ]
+}
