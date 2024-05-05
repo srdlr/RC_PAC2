@@ -1,0 +1,1035 @@
+@prefix : <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#> .
+
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology> rdf:type owl:Ontology ;
+                                                                                            rdfs:comment "@Author: Sergi Rodrigo de los Ríos"@en ,
+                                                                                                         "FSSO: An ontology for Flight Satisfaction Surveys."@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#sameAs
+rdfs:sameAs rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#has_passenger
+:has_passenger rdf:type owl:ObjectProperty ;
+               owl:inverseOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with> ;
+               rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+               rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> ;
+               rdfs:comment "This property links a flight to a person through a reservation." ;
+               rdfs:label "has_passenger" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_provider_of
+:is_provider_of rdf:type owl:ObjectProperty ;
+                owl:inverseOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider> ;
+                rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline> ;
+                rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                rdfs:comment "This property links an airline to the flight it is providing the service."@en ;
+                rdfs:label "is_provider_of" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_vehicle_of
+:is_vehicle_of rdf:type owl:ObjectProperty ;
+               owl:inverseOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle> ;
+               rdfs:comment "This property links an aircraft with a flight."@en ;
+               rdfs:label "is_vehicle_of" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport> rdf:type owl:ObjectProperty ;
+                                                                                                       rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                       rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> ;
+                                                                                                       rdfs:comment "This property links a flight to an airport."@en ;
+                                                                                                       rdfs:label "has_airport" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged> rdf:type owl:ObjectProperty ,
+                                                                                                                 owl:InverseFunctionalProperty ;
+                                                                                                        rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> ;
+                                                                                                        rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation> ;
+                                                                                                        rdfs:comment "This property links a reservation to the person that arranged it."@en ;
+                                                                                                        rdfs:label "has_arranged" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport> rdf:type owl:ObjectProperty ;
+                                                                                                              rdfs:subPropertyOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport> ;
+                                                                                                              rdf:type owl:FunctionalProperty ,
+                                                                                                                       owl:AsymmetricProperty ;
+                                                                                                              rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                              rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> ;
+                                                                                                              rdfs:comment "This property links a flight to its arrival airport."@en ;
+                                                                                                              rdfs:label "has_arrivalAirport" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author> rdf:type owl:ObjectProperty ;
+                                                                                                      owl:inverseOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of> ;
+                                                                                                      rdf:type owl:FunctionalProperty ,
+                                                                                                               owl:AsymmetricProperty ;
+                                                                                                      rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                      rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> ;
+                                                                                                      rdfs:comment "This property links a review to the person who wrote it."@en ;
+                                                                                                      rdfs:label "has_author" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport> rdf:type owl:ObjectProperty ;
+                                                                                                                rdfs:subPropertyOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport> ;
+                                                                                                                rdf:type owl:FunctionalProperty ,
+                                                                                                                         owl:AsymmetricProperty ;
+                                                                                                                rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                                rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> ;
+                                                                                                                rdfs:comment "This property links a flight to its departure airport."@en ;
+                                                                                                                rdfs:label "has_departureAirport" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed> rdf:type owl:ObjectProperty ,
+                                                                                                                     owl:FunctionalProperty ,
+                                                                                                                     owl:AsymmetricProperty ;
+                                                                                                            rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                            rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                            rdfs:comment "This property links a review to the specific flight it evaluates."@en ;
+                                                                                                            rdfs:label "has_itemReviewed" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider> rdf:type owl:ObjectProperty ,
+                                                                                                                 owl:FunctionalProperty ,
+                                                                                                                 owl:AsymmetricProperty ;
+                                                                                                        rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                        rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline> ;
+                                                                                                        rdfs:comment "This property links a flight to the airline that provides the service."@en ;
+                                                                                                        rdfs:label "has_provider" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_purpose
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_purpose> rdf:type owl:ObjectProperty ,
+                                                                                                                owl:FunctionalProperty ,
+                                                                                                                owl:AsymmetricProperty ;
+                                                                                                       rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation> ;
+                                                                                                       rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel> ;
+                                                                                                       rdfs:comment "This property links a flight reservation to the purpose of travel for the passenger."@en ;
+                                                                                                       rdfs:label "has_purpose" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating> rdf:type owl:ObjectProperty ,
+                                                                                                               owl:FunctionalProperty ;
+                                                                                                      rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                      rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                      rdfs:comment "This property links a review to its rating for a flight service."@en ;
+                                                                                                      rdfs:label "has_rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for> rdf:type owl:ObjectProperty ,
+                                                                                                                        owl:FunctionalProperty ,
+                                                                                                                        owl:AsymmetricProperty ;
+                                                                                                               rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation> ;
+                                                                                                               rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                               rdfs:comment "This property links the flight reservation with the flight."@en ;
+                                                                                                               rdfs:label "has_reservation_for" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved> rdf:type owl:ObjectProperty ,
+                                                                                                                     owl:FunctionalProperty ,
+                                                                                                                     owl:AsymmetricProperty ;
+                                                                                                            rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation> ;
+                                                                                                            rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat> ;
+                                                                                                            rdfs:comment "This property links a flight reservation to the seat that is reserved."@en ;
+                                                                                                            rdfs:label "has_seatReserved" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport> rdf:type owl:ObjectProperty ;
+                                                                                                               rdfs:subPropertyOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport> ;
+                                                                                                               rdf:type owl:AsymmetricProperty ;
+                                                                                                               rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                               rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> ;
+                                                                                                               rdfs:comment "This property links a flight to any stopover airports it has during the journey."@en ;
+                                                                                                               rdfs:label "has_stopoverAirport" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle> rdf:type owl:ObjectProperty ,
+                                                                                                                owl:FunctionalProperty ,
+                                                                                                                owl:AsymmetricProperty ;
+                                                                                                       rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                       rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft> ;
+                                                                                                       rdfs:comment "This property links a flight with an aircraft"@en ;
+                                                                                                       rdfs:label "has_vehicle" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of> rdf:type owl:ObjectProperty ;
+                                                                                                        rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> ;
+                                                                                                        rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                        rdfs:comment "This property links a person with the review which authored."@en ;
+                                                                                                        rdfs:label "is_author_of" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_living_in
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_living_in> rdf:type owl:ObjectProperty ,
+                                                                                                                 owl:FunctionalProperty ,
+                                                                                                                 owl:AsymmetricProperty ;
+                                                                                                        rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> ;
+                                                                                                        rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Country> ;
+                                                                                                        rdfs:comment "This property links a person with its residence country"@en ;
+                                                                                                        rdfs:label "is_living_in" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with> rdf:type owl:ObjectProperty ;
+                                                                                                              rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> ;
+                                                                                                              rdfs:range <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                              owl:propertyChainAxiom ( <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged>
+                                                                                                                                       <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for>
+                                                                                                                                     ) ;
+                                                                                                              rdfs:comment "This property links a person to a flight through a reservation."@en ;
+                                                                                                              rdfs:label "is_travelling_with" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate> rdf:type owl:DatatypeProperty ,
+                                                                                                                    owl:FunctionalProperty ;
+                                                                                                           rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                           rdfs:range xsd:dateTime ;
+                                                                                                           rdfs:comment "This property represents the scheduled arrival date of a flight."@en ;
+                                                                                                           rdfs:label "has_arrivalDate" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate> rdf:type owl:DatatypeProperty ,
+                                                                                                                      owl:FunctionalProperty ;
+                                                                                                             rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                             rdfs:range xsd:dateTime ;
+                                                                                                             rdfs:comment "This property represents the scheduled departure date of a flight."@en ;
+                                                                                                             rdfs:label "has_departureDate" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber> rdf:type owl:DatatypeProperty ,
+                                                                                                                     owl:FunctionalProperty ;
+                                                                                                            rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                            rdfs:range xsd:string ;
+                                                                                                            rdfs:comment "This property represents the unique identifier of a flight."@en ;
+                                                                                                            rdfs:label "has_flightNumber" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_personName
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_personName> rdf:type owl:DatatypeProperty ,
+                                                                                                                   owl:FunctionalProperty ;
+                                                                                                          rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> ;
+                                                                                                          rdfs:range xsd:string ;
+                                                                                                          rdfs:comment "This property represents a person name."@en ;
+                                                                                                          rdfs:label "has_personName" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue> rdf:type owl:DatatypeProperty ,
+                                                                                                                    owl:FunctionalProperty ;
+                                                                                                           rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                           rdfs:range xsd:integer ;
+                                                                                                           rdfs:comment "This property represents the numerical value of the rating for a certain sevice."@en ;
+                                                                                                           rdfs:label "has_ratingValue" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewBody
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewBody> rdf:type owl:DatatypeProperty ,
+                                                                                                                   owl:FunctionalProperty ;
+                                                                                                          rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                          rdfs:range xsd:string ;
+                                                                                                          rdfs:comment "This property represents the text content of the review body."@en ;
+                                                                                                          rdfs:label "has_reviewBody" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewTitle
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewTitle> rdf:type owl:DatatypeProperty ,
+                                                                                                                    owl:FunctionalProperty ;
+                                                                                                           rdfs:domain <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                           rdfs:range xsd:string ;
+                                                                                                           rdfs:comment "This property represents the title of the review."@en ;
+                                                                                                           rdfs:label "has_reviewTitle" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft> rdf:type owl:Class ;
+                                                                                                    rdfs:comment "This class represents an airplane used for passenger transportation."@en ;
+                                                                                                    rdfs:label "Aircraft" ;
+                                                                                                    rdfs:sameAs "https://dbpedia.org/page/Aircraft" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline> rdf:type owl:Class ;
+                                                                                                   rdfs:comment "This class represents a company that provides commercial air transportation services."@en ;
+                                                                                                   rdfs:label "Airline" ;
+                                                                                                   rdfs:sameAs "https://dbpedia.org/page/Airline" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> rdf:type owl:Class ;
+                                                                                                   rdfs:comment "This class represents a facility designed for the takeoff and landing of aircraft."@en ;
+                                                                                                   rdfs:label "Airport" ;
+                                                                                                   rdfs:sameAs "https://dbpedia.org/page/Airport" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat> rdf:type owl:Class ;
+                                                                                                               rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat> ;
+                                                                                                               rdfs:comment "This class represents a seat in the business class section of an aircraft."@en ;
+                                                                                                               rdfs:label "Business Class Seat" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Bussiness
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Bussiness> rdf:type owl:Class ;
+                                                                                                     rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel> ;
+                                                                                                     owl:disjointWith <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure> ;
+                                                                                                     rdfs:comment "This class represents travel undertaken for professional or work-related purposes."@en ;
+                                                                                                     rdfs:label "Bussiness" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating> rdf:type owl:Class ;
+                                                                                                                      rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                                      rdfs:comment "This class represents an evaluation score given by a user for the cabin staff service."@en ;
+                                                                                                                      rdfs:label "Cabin Staff Service Rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Country
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Country> rdf:type owl:Class ;
+                                                                                                   rdfs:comment "This class represents a sovereign nation."@en ;
+                                                                                                   rdfs:label "Country" ;
+                                                                                                   rdfs:sameAs "https://dbpedia.org/page/Country" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure> rdf:type owl:Class ;
+                                                                                                          rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure> ;
+                                                                                                          rdfs:comment "This class represents leisure travel undertaken by a couple."@en ;
+                                                                                                          rdfs:label "Couple Leisure" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Direct_Flight
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Direct_Flight> rdf:type owl:Class ;
+                                                                                                         owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight>
+                                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                                      owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport> ;
+                                                                                                                                                      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                                                                                                                      owl:onClass <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport>
+                                                                                                                                                    ]
+                                                                                                                                                  ) ;
+                                                                                                                               rdf:type owl:Class
+                                                                                                                             ] ;
+                                                                                                         rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                         rdfs:comment "This class represents a flight with no stops."@en ;
+                                                                                                         rdfs:label "Direct Flight" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat> rdf:type owl:Class ;
+                                                                                                              rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat> ;
+                                                                                                              rdfs:comment "This class represents a seat in the economy class section of an aircraft."@en ;
+                                                                                                              rdfs:label "Economy Class Seat" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure> rdf:type owl:Class ;
+                                                                                                          rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure> ;
+                                                                                                          rdfs:comment "This class represents leisure travel undertaken by a family group."@en ;
+                                                                                                          rdfs:label "Family Leisure" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat> rdf:type owl:Class ;
+                                                                                                            rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat> ;
+                                                                                                            rdfs:comment "This class represents a seat in the first class section of an aircraft."@en ;
+                                                                                                            rdfs:label "First Class Seat" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> rdf:type owl:Class ;
+                                                                                                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport> ;
+                                                                                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                                    owl:onClass <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport>
+                                                                                                                  ] ,
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport> ;
+                                                                                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                                    owl:onClass <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport>
+                                                                                                                  ] ;
+                                                                                                  rdfs:comment "This class represents a specific instance of an airplane traveling between two airports."@en ;
+                                                                                                  rdfs:label "Flight" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation> rdf:type owl:Class ;
+                                                                                                              rdfs:comment "This class represents a reservation for a seat on a specific flight."@en ;
+                                                                                                              rdfs:label "Flight Reservation" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating> rdf:type owl:Class ;
+                                                                                                                 rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                                 rdfs:comment "This class represents an evaluation score given by a user for the food and beverage."@en ;
+                                                                                                                 rdfs:label "Food and Beverages Rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating> rdf:type owl:Class ;
+                                                                                                                 rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                                 rdfs:comment "This class represents an evaluation score given by a user for the ground services."@en ;
+                                                                                                                 rdfs:label "Ground Service Rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating> rdf:type owl:Class ;
+                                                                                                                         rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                                         rdfs:comment "This class represents an evaluation score given by a user for the inflight entertainment."@en ;
+                                                                                                                         rdfs:label "Inflight Entertainment Rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure> rdf:type owl:Class ;
+                                                                                                   rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel> ;
+                                                                                                   rdfs:comment "This class represents travel undertaken for recreational purposes."@en ;
+                                                                                                   rdfs:label "Leisure" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review> rdf:type owl:Class ;
+                                                                                                           rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review> ;
+                                                                                                           rdfs:comment "This class represents a review that expresses a negative sentiment about the flight experience."@en ;
+                                                                                                           rdfs:label "Negative Review" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review> rdf:type owl:Class ;
+                                                                                                          rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review> ;
+                                                                                                          rdfs:comment "This class represents a review that expresses a neutral sentiment about the flight experience."@en ;
+                                                                                                          rdfs:label "Neutral Review" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating> rdf:type owl:Class ;
+                                                                                                          rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                          rdfs:comment "This class represents an evaluation score given by a user for the overall flight experience."@en ;
+                                                                                                          rdfs:label "Overall Rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Passenger
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Passenger> rdf:type owl:Class ;
+                                                                                                     owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person>
+                                                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                                                  owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with> ;
+                                                                                                                                                  owl:someValuesFrom <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight>
+                                                                                                                                                ]
+                                                                                                                                              ) ;
+                                                                                                                           rdf:type owl:Class
+                                                                                                                         ] ;
+                                                                                                     rdfs:comment "This class represents a person traveling on a flight."@en ;
+                                                                                                     rdfs:label "Passenger" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> rdf:type owl:Class ;
+                                                                                                  rdfs:comment "This class represents a person."@en ;
+                                                                                                  rdfs:label "Person" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review> rdf:type owl:Class ;
+                                                                                                           rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review> ;
+                                                                                                           rdfs:comment "This class represents a review that expresses a positive sentiment about the flight experience."@en ;
+                                                                                                           rdfs:label "Positive Review" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat> rdf:type owl:Class ;
+                                                                                                                      rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat> ;
+                                                                                                                      rdfs:comment "This class represents a seat in the premium economy class section of an aircraft"@en ;
+                                                                                                                      rdfs:label "Premium Economy Class Seat" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel> rdf:type owl:Class ;
+                                                                                                             rdfs:comment "This class represents the overall reason for a passenger's reservation."@en ;
+                                                                                                             rdfs:label "Purpose of trave" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> rdf:type owl:Class ;
+                                                                                                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue> ;
+                                                                                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                                    owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                                                                                                                      owl:onDatatype xsd:integer ;
+                                                                                                                                      owl:withRestrictions ( [ xsd:minExclusive 0
+                                                                                                                                                             ]
+                                                                                                                                                             [ xsd:maxInclusive 10
+                                                                                                                                                             ]
+                                                                                                                                                           )
+                                                                                                                                    ]
+                                                                                                                  ] ;
+                                                                                                  rdfs:comment "This class represents an evaluation score given by a user."@en ;
+                                                                                                  rdfs:label "Rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> rdf:type owl:Class ;
+                                                                                                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author> ;
+                                                                                                                    owl:someValuesFrom <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person>
+                                                                                                                  ] ,
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed> ;
+                                                                                                                    owl:someValuesFrom <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight>
+                                                                                                                  ] ,
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating> ;
+                                                                                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                                    owl:onClass <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating>
+                                                                                                                  ] ;
+                                                                                                  rdfs:comment "This class represents a written evaluation of the service."@en ;
+                                                                                                  rdfs:label "Review" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reviewer
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reviewer> rdf:type owl:Class ;
+                                                                                                    owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person>
+                                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                                 owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of> ;
+                                                                                                                                                 owl:someValuesFrom <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review>
+                                                                                                                                               ]
+                                                                                                                                             ) ;
+                                                                                                                          rdf:type owl:Class
+                                                                                                                        ] ;
+                                                                                                    rdfs:comment "This class represents a person authoring a review."@en ;
+                                                                                                    rdfs:label "Reviewer" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review> rdf:type owl:Class ;
+                                                                                                                       rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                                       rdfs:comment "This class represents a review with a leveled sentiment about the flight experience." ;
+                                                                                                                       rdfs:label "Satisfaction Leveled Review" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat> rdf:type owl:Class ;
+                                                                                                rdfs:comment "This class represents a specific seat reserverved."@en ;
+                                                                                                rdfs:label "Seat" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating> rdf:type owl:Class ;
+                                                                                                               rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                               rdfs:comment "This class represents an evaluation score given by a user for the seat comfort."@en ;
+                                                                                                               rdfs:label "Seat Comfort Rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure> rdf:type owl:Class ;
+                                                                                                        rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure> ;
+                                                                                                        rdfs:comment "This class represents leisure travel undertaken by a single person."@en ;
+                                                                                                        rdfs:label "Solo leisure" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating> rdf:type owl:Class ;
+                                                                                                                  rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                                  rdfs:comment "This class represents an evaluation score given by a user for the value for money of the service."@en ;
+                                                                                                                  rdfs:label "Value for Money Rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Verified_Review
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Verified_Review> rdf:type owl:Class ;
+                                                                                                           rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                           rdfs:comment "This class represents a review that has been verified to be from a legitimate customer who has used the service."@en ;
+                                                                                                           rdfs:label "Verified Review" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating> rdf:type owl:Class ;
+                                                                                                                    rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating> ;
+                                                                                                                    rdfs:comment "This class represents an evaluation score given by a user for the services aof Wifi and Connectivity."@en ;
+                                                                                                                    rdfs:label "Wifi and Connectivity Rating" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/With_Stopovers_Flight
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/With_Stopovers_Flight> rdf:type owl:Class ;
+                                                                                                                 owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight>
+                                                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                                                              owl:onProperty <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport> ;
+                                                                                                                                                              owl:someValuesFrom <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport>
+                                                                                                                                                            ]
+                                                                                                                                                          ) ;
+                                                                                                                                       rdf:type owl:Class
+                                                                                                                                     ] ;
+                                                                                                                 rdfs:subClassOf <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight> ;
+                                                                                                                 rdfs:comment "This class represents a flight with stops."@en ;
+                                                                                                                 rdfs:label "Flight with stopovers" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BCN
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BCN> rdf:type owl:NamedIndividual ,
+                                                                                                        <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_737
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_737> rdf:type owl:NamedIndividual ,
+                                                                                                               <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_777
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_777> rdf:type owl:NamedIndividual ,
+                                                                                                               <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BusinessSeat1
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BusinessSeat1> rdf:type owl:NamedIndividual ,
+                                                                                                                  <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/CabinRating7
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/CabinRating7> rdf:type owl:NamedIndividual ,
+                                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/DOH
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/DOH> rdf:type owl:NamedIndividual ,
+                                                                                                        <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/EconomySeat2
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/EconomySeat2> rdf:type owl:NamedIndividual ,
+                                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001> rdf:type owl:NamedIndividual ,
+                                                                                                          <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Direct_Flight> ;
+                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BCN> ;
+                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/STN> ;
+                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ryanair> ;
+                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_737> ;
+                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate> "2023-11-23T11:00:00"^^xsd:dateTime ;
+                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate> "2023-11-23T07:00:00"^^xsd:dateTime ;
+                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber> "FR001" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/LHR
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/LHR> rdf:type owl:NamedIndividual ,
+                                                                                                        <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/NRT
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/NRT> rdf:type owl:NamedIndividual ,
+                                                                                                        <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating4
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating4> rdf:type owl:NamedIndividual ,
+                                                                                                                   <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating> ;
+                                                                                                          <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue> 4 .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating6
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating6> rdf:type owl:NamedIndividual ,
+                                                                                                                   <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating> ;
+                                                                                                          <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue> 6 .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating8
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating8> rdf:type owl:NamedIndividual ,
+                                                                                                                   <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating> ;
+                                                                                                          <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue> 8 .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01> rdf:type owl:NamedIndividual ,
+                                                                                                             <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation1> ,
+                                                                                                                                                                                                            <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation2> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person02
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person02> rdf:type owl:NamedIndividual ,
+                                                                                                             <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01> rdf:type owl:NamedIndividual ,
+                                                                                                         <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/With_Stopovers_Flight> ;
+                                                                                                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/NRT> ;
+                                                                                                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/LHR> ;
+                                                                                                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Qatar_Airlines> ;
+                                                                                                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/DOH> ;
+                                                                                                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_777> ;
+                                                                                                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate> "2023-10-24T02:00:00"^^xsd:dateTime ;
+                                                                                                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate> "2023-10-23T08:00:00"^^xsd:dateTime ;
+                                                                                                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber> "QA01" .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Qatar_Airlines
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Qatar_Airlines> rdf:type owl:NamedIndividual ,
+                                                                                                                   <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation1
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation1> rdf:type owl:NamedIndividual ,
+                                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation> ;
+                                                                                                        <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01> ;
+                                                                                                        <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BusinessSeat1> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation2
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation2> rdf:type owl:NamedIndividual ,
+                                                                                                                 <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation> ;
+                                                                                                        <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001> ;
+                                                                                                        <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/EconomySeat2> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review01
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review01> rdf:type owl:NamedIndividual ,
+                                                                                                             <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating8> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review02
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review02> rdf:type owl:NamedIndividual ,
+                                                                                                             <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating4> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review03
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review03> rdf:type owl:NamedIndividual ,
+                                                                                                             <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person02> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001> ;
+                                                                                                    <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating6> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ryanair
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ryanair> rdf:type owl:NamedIndividual ,
+                                                                                                            <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline> .
+
+
+###  http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/STN
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/STN> rdf:type owl:NamedIndividual ,
+                                                                                                        <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport> .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review>
+                <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review>
+              )
+] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:r rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:ov rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:v rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/r> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/f> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/p> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/b> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "A Review is verified if their authors were actually passengers of the flight, therfore the author has to have a booking." ;
+   rdfs:label "VerifiedReview" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/r>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/r> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/f>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/r> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/p>
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/p> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/b>
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/b> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/f>
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Verified_Review> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/r>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "A review is negative when the overall rating is smaller than 5" ;
+   rdfs:label "NegativReview" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :r
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :ov
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :r ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :ov
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :ov ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :v
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first :v ;
+                                                                                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                           rdf:first 5 ;
+                                                                                                                                                           rdf:rest rdf:nil
+                                                                                                                                                         ]
+                                                                                                                                              ]
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :r
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "A review is positive whe the overall rating is greater than 7" ;
+   rdfs:label "PositiveReview" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :r
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :ov
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :r ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :ov
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :ov ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :v
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first :v ;
+                                                                                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                           rdf:first 7 ;
+                                                                                                                                                           rdf:rest rdf:nil
+                                                                                                                                                         ]
+                                                                                                                                              ]
+                                                                                                 ] ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :r
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "A review is neutral when the overall rating is greater or equal 5 and less or equal 7" ;
+   rdfs:label "NeutralReview" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :r
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :ov
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :r ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :ov
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :ov ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :v
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThanOrEqual> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first :v ;
+                                                                                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                           rdf:first 7 ;
+                                                                                                                                                           rdf:rest rdf:nil
+                                                                                                                                                         ]
+                                                                                                                                              ]
+                                                                                                 ] ;
+                                                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThanOrEqual> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                                           rdf:first :v ;
+                                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                                      rdf:first 5 ;
+                                                                                                                                                                      rdf:rest rdf:nil
+                                                                                                                                                                    ]
+                                                                                                                                                         ]
+                                                                                                            ] ;
+                                                                                                  rdf:rest rdf:nil
+                                                                                                ]
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :r
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
