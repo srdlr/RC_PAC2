@@ -1,0 +1,2732 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>FSSO: Flight Satisfaction Surveys Ontology</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology","name":"FSSO: Flight Satisfaction Surveys Ontology", "headline":"FSSO is a proposed solution for the PAC2 evaluaton of UOC's Representació del Coneixement course.", "dateReleased":"Sun May 05 20:11:54 BST 2024", "dateModified":"2024", "author":[{"@type":"Person","name":"Sergi Rodrigo de los Rios"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>FSSO: Flight Satisfaction Surveys Ontology</h1>
+
+
+<dl>
+<dt>Modified on: 2024</dt>
+<dt>Latest version:</dt>
+<dd><a href="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology">http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology</a></dd>
+<dt>Authors:</dt>
+<dd>Sergi Rodrigo de los Rios</dd>
+
+<dt>Publisher:</dt>
+<dd>Sergi Rodrigo de los Rios</dd>
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="http://insertlicenseURIhere.example.org" target="_blank"><img src="https://img.shields.io/badge/License-license%20name%20goes%20here-blue.svg" alt="http://insertlicenseURIhere.example.org" /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --></dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div>     <div id="abstract"><h2>Abstract</h2><span class="markdown">
+FSSO is a proposed solution for the PAC2 evaluaton of UOC's Representació del Coneixement course.
+</span>
+</div>
+<div id="toc"></div> 
+
+<!--INTRODUCTION SECTION-->
+    <div id="introduction"><h2 id="intro" class="list">Introduction <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">This ontology defines the concepts related to flight satisfation surveys.</span>
+<div id="namespacedeclarations">
+<h3 id="ns" class="list">Namespace declarations</h3>
+<div id="ns" align="center">
+<table>
+<caption> <a href="#ns"> Table 1</a>: Namespaces used in the document </caption>
+<tbody>
+<tr><td><b>[Ontology NS Prefix]</b></td><td>&lt;http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#&gt;</td></tr>
+<tr><td><b>fsso</b></td><td>&lt;http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/&gt;</td></tr>
+<tr><td><b>owl</b></td><td>&lt;http://www.w3.org/2002/07/owl#&gt;</td></tr>
+<tr><td><b>rdf</b></td><td>&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</td></tr>
+<tr><td><b>rdfs</b></td><td>&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</td></tr>
+<tr><td><b>swrl</b></td><td>&lt;http://www.w3.org/2003/11/swrl#&gt;</td></tr>
+<tr><td><b>swrla</b></td><td>&lt;http://swrl.stanford.edu/ontologies/3.3/swrla.owl#&gt;</td></tr>
+<tr><td><b>swrlb</b></td><td>&lt;http://www.w3.org/2003/11/swrlb#&gt;</td></tr>
+<tr><td><b>xml</b></td><td>&lt;http://www.w3.org/XML/1998/namespace&gt;</td></tr>
+<tr><td><b>xsd</b></td><td>&lt;http://www.w3.org/2001/XMLSchema#&gt;</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">FSSO: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#/Aircraft"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft">Aircraft</a>
+   </li>
+   <li>
+      <a href="#/Airline"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline">Airline</a>
+   </li>
+   <li>
+      <a href="#/Airport"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a>
+   </li>
+   <li>
+      <a href="#/Business_Class_Seat"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat">Business Class Seat</a>
+   </li>
+   <li>
+      <a href="#/Bussiness"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Bussiness">Bussiness</a>
+   </li>
+   <li>
+      <a href="#/Cabin_Staff_Service_Rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a>
+   </li>
+   <li>
+      <a href="#/Country"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Country">Country</a>
+   </li>
+   <li>
+      <a href="#/Couple_Leisure"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure">Couple Leisure</a>
+   </li>
+   <li>
+      <a href="#/Direct_Flight"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Direct_Flight">Direct Flight</a>
+   </li>
+   <li>
+      <a href="#/Economy_Class_Seat"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat">Economy Class Seat</a>
+   </li>
+   <li>
+      <a href="#/Family_Leisure"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure">Family Leisure</a>
+   </li>
+   <li>
+      <a href="#/First_Class_Seat"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat">First Class Seat</a>
+   </li>
+   <li>
+      <a href="#/Flight"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a>
+   </li>
+   <li>
+      <a href="#/Flight_Reservation"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation">Flight Reservation</a>
+   </li>
+   <li>
+      <a href="#/With_Stopovers_Flight"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/With_Stopovers_Flight">Flight with stopovers</a>
+   </li>
+   <li>
+      <a href="#/Food_Beverages_Rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a>
+   </li>
+   <li>
+      <a href="#/Ground_Service_Rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a>
+   </li>
+   <li>
+      <a href="#/Inflight_Entertainment_Rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a>
+   </li>
+   <li>
+      <a href="#/Leisure"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure">Leisure</a>
+   </li>
+   <li>
+      <a href="#/Negative_Review"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review">Negative Review</a>
+   </li>
+   <li>
+      <a href="#/Neutral_Review"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review">Neutral Review</a>
+   </li>
+   <li>
+      <a href="#/Overall_Rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a>
+   </li>
+   <li>
+      <a href="#/Passenger"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Passenger">Passenger</a>
+   </li>
+   <li>
+      <a href="#/Person"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a>
+   </li>
+   <li>
+      <a href="#/Positive_Review"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review">Positive Review</a>
+   </li>
+   <li>
+      <a href="#/Premium_Economy_Class_Seat"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat">Premium Economy Class Seat</a>
+   </li>
+   <li>
+      <a href="#/Purpose_Of_Travel"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel">Purpose of trave</a>
+   </li>
+   <li>
+      <a href="#/Rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a>
+   </li>
+   <li>
+      <a href="#/Review"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a>
+   </li>
+   <li>
+      <a href="#/Reviewer"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reviewer">Reviewer</a>
+   </li>
+   <li>
+      <a href="#/Satisfaction_Leveled_Review"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review">Satisfaction Leveled Review</a>
+   </li>
+   <li>
+      <a href="#/Seat"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat">Seat</a>
+   </li>
+   <li>
+      <a href="#/Seat_Comfort_Rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a>
+   </li>
+   <li>
+      <a href="#/Solo_Leisure"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure">Solo leisure</a>
+   </li>
+   <li>
+      <a href="#/Value_For_Money_Rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a>
+   </li>
+   <li>
+      <a href="#/Verified_Review"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Verified_Review">Verified Review</a>
+   </li>
+   <li>
+      <a href="#/Wifi_Connectivity_Rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#/has_airport"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport">has_airport</a>
+   </li>
+   <li>
+      <a href="#/has_arranged"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged">has_arranged</a>
+   </li>
+   <li>
+      <a href="#/has_arrivalAirport"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport">has_arrivalAirport</a>
+   </li>
+   <li>
+      <a href="#/has_author"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author">has_author</a>
+   </li>
+   <li>
+      <a href="#/has_departureAirport"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport">has_departureAirport</a>
+   </li>
+   <li>
+      <a href="#/has_itemReviewed"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed">has_itemReviewed</a>
+   </li>
+   <li>
+      <a href="#has_passenger"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#has_passenger">has_passenger</a>
+   </li>
+   <li>
+      <a href="#/has_provider"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider">has_provider</a>
+   </li>
+   <li>
+      <a href="#/has_purpose"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_purpose">has_purpose</a>
+   </li>
+   <li>
+      <a href="#/has_rating"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a>
+   </li>
+   <li>
+      <a href="#/has_reservation_for"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for">has_reservation_for</a>
+   </li>
+   <li>
+      <a href="#/has_seatReserved"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved">has_seatReserved</a>
+   </li>
+   <li>
+      <a href="#/has_stopoverAirport"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport">has_stopoverAirport</a>
+   </li>
+   <li>
+      <a href="#/has_vehicle"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle">has_vehicle</a>
+   </li>
+   <li>
+      <a href="#/is_author_of"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of">is_author_of</a>
+   </li>
+   <li>
+      <a href="#/is_living_in"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_living_in">is_living_in</a>
+   </li>
+   <li>
+      <a href="#is_provider_of"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_provider_of">is_provider_of</a>
+   </li>
+   <li>
+      <a href="#/is_travelling_with"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with">is_travelling_with</a>
+   </li>
+   <li>
+      <a href="#is_vehicle_of"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_vehicle_of">is_vehicle_of</a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#/has_arrivalDate"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate">has_arrivalDate</a>
+   </li>
+   <li>
+      <a href="#/has_departureDate"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate">has_departureDate</a>
+   </li>
+   <li>
+      <a href="#/has_flightNumber"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber">has_flightNumber</a>
+   </li>
+   <li>
+      <a href="#/has_personName"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_personName">has_personName</a>
+   </li>
+   <li>
+      <a href="#/has_ratingValue"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue">has_ratingValue</a>
+   </li>
+   <li>
+      <a href="#/has_reviewBody"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewBody">has_reviewBody</a>
+   </li>
+   <li>
+      <a href="#/has_reviewTitle"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewTitle">has_reviewTitle</a>
+   </li>
+</ul><h4>Annotation Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"
+         title="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled">
+         <span>is Rule Enabled</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2000/01/rdf-schema#sameAs" title="http://www.w3.org/2000/01/rdf-schema#sameAs">
+         <span>same As</span>
+      </a>
+   </li>
+</ul><h4>Named Individuals</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#/BCN"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BCN">BCN</a>
+   </li>
+   <li>
+      <a href="#/Boeing_737"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_737">Boeing_737</a>
+   </li>
+   <li>
+      <a href="#/Boeing_777"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_777">Boeing_777</a>
+   </li>
+   <li>
+      <a href="#/BusinessSeat1"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BusinessSeat1">BusinessSeat1</a>
+   </li>
+   <li>
+      <a href="#/CabinRating7"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/CabinRating7">CabinRating7</a>
+   </li>
+   <li>
+      <a href="#/DOH"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/DOH">DOH</a>
+   </li>
+   <li>
+      <a href="#/EconomySeat2"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/EconomySeat2">EconomySeat2</a>
+   </li>
+   <li>
+      <a href="#/FR001"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001">FR001</a>
+   </li>
+   <li>
+      <a href="#/LHR"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/LHR">LHR</a>
+   </li>
+   <li>
+      <a href="#/NRT"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/NRT">NRT</a>
+   </li>
+   <li>
+      <a href="#/OverallRating4"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating4">OverallRating4</a>
+   </li>
+   <li>
+      <a href="#/OverallRating6"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating6">OverallRating6</a>
+   </li>
+   <li>
+      <a href="#/OverallRating8"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating8">OverallRating8</a>
+   </li>
+   <li>
+      <a href="#/Person01"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01">Person1</a>
+   </li>
+   <li>
+      <a href="#/Person02"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person02">Person2</a>
+   </li>
+   <li>
+      <a href="#/Qatar_Airlines"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Qatar_Airlines">Qatar_Airlines</a>
+   </li>
+   <li>
+      <a href="#/QR01"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01">QR01</a>
+   </li>
+   <li>
+      <a href="#/Reservation1"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation1">Reservation1</a>
+   </li>
+   <li>
+      <a href="#/Reservation2"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation2">Reservation2</a>
+   </li>
+   <li>
+      <a href="#/Review01"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review01">Review01</a>
+   </li>
+   <li>
+      <a href="#/Review02"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review02">Review02</a>
+   </li>
+   <li>
+      <a href="#/Review03"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review03">Review03</a>
+   </li>
+   <li>
+      <a href="#/Ryanair"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ryanair">Ryanair</a>
+   </li>
+   <li>
+      <a href="#/STN"
+         title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/STN">STN</a>
+   </li>
+</ul><h4> SWRL Rules </h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#d4e1831">NegativReview</a>
+   </li>
+   <li>
+      <a href="#d4e2159">NeutralReview</a>
+   </li>
+   <li>
+      <a href="#d4e1995">PositiveReview</a>
+   </li>
+   <li>
+      <a href="#d4e1684">VerifiedReview</a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">FSSO: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">FSSO: An ontology for Flight Satisfaction Surveys.</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for FSSO classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by FSSO.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+ <h3 id="classes-headline" class="list">Classes</h3>
+ <ul class="hlist">
+  <li><a href="#/Aircraft" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft">Aircraft</a></li>
+  <li><a href="#/Airline" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline">Airline</a></li>
+  <li><a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a></li>
+  <li><a href="#/Business_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat">Business Class Seat</a></li>
+  <li><a href="#/Bussiness" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Bussiness">Bussiness</a></li>
+  <li><a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a></li>
+  <li><a href="#/Country" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Country">Country</a></li>
+  <li><a href="#/Couple_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure">Couple Leisure</a></li>
+  <li><a href="#/Direct_Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Direct_Flight">Direct Flight</a></li>
+  <li><a href="#/Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat">Economy Class Seat</a></li>
+  <li><a href="#/Family_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure">Family Leisure</a></li>
+  <li><a href="#/First_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat">First Class Seat</a></li>
+  <li><a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a></li>
+  <li><a href="#/Flight_Reservation" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation">Flight Reservation</a></li>
+  <li><a href="#/With_Stopovers_Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/With_Stopovers_Flight">Flight with stopovers</a></li>
+  <li><a href="#/Food_Beverages_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a></li>
+  <li><a href="#/Ground_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a></li>
+  <li><a href="#/Inflight_Entertainment_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a></li>
+  <li><a href="#/Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure">Leisure</a></li>
+  <li><a href="#/Negative_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review">Negative Review</a></li>
+  <li><a href="#/Neutral_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review">Neutral Review</a></li>
+  <li><a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a></li>
+  <li><a href="#/Passenger" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Passenger">Passenger</a></li>
+  <li><a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a></li>
+  <li><a href="#/Positive_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review">Positive Review</a></li>
+  <li><a href="#/Premium_Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat">Premium Economy Class Seat</a></li>
+  <li><a href="#/Purpose_Of_Travel" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel">Purpose of trave</a></li>
+  <li><a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a></li>
+  <li><a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a></li>
+  <li><a href="#/Reviewer" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reviewer">Reviewer</a></li>
+  <li><a href="#/Satisfaction_Leveled_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review">Satisfaction Leveled Review</a></li>
+  <li><a href="#/Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat">Seat</a></li>
+  <li><a href="#/Seat_Comfort_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a></li>
+  <li><a href="#/Solo_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure">Solo leisure</a></li>
+  <li><a href="#/Value_For_Money_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a></li>
+  <li><a href="#/Verified_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Verified_Review">Verified Review</a></li>
+  <li><a href="#/Wifi_Connectivity_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a></li>
+ </ul>
+ <div class="entity" id="/Aircraft">
+  <h3>Aircraft<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft</p>
+  <div class="comment">
+   <span class="markdown">This class represents an airplane used for passenger transportation.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/has_vehicle" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle">has_vehicle</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/Boeing_737" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_737">Boeing_737</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/Boeing_777" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_777">Boeing_777</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Airline">
+  <h3>Airline<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline</p>
+  <div class="comment">
+   <span class="markdown">This class represents a company that provides commercial air transportation services.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#is_provider_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_provider_of">is_provider_of</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/has_provider" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider">has_provider</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/Qatar_Airlines" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Qatar_Airlines">Qatar_Airlines</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/Ryanair" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ryanair">Ryanair</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Airport">
+  <h3>Airport<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport</p>
+  <div class="comment">
+   <span class="markdown">This class represents a facility designed for the takeoff and landing of aircraft.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/has_airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport">has_airport</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_arrivalAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport">has_arrivalAirport</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_departureAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport">has_departureAirport</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_stopoverAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport">has_stopoverAirport</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/BCN" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BCN">BCN</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/DOH" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/DOH">DOH</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/LHR" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/LHR">LHR</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/NRT" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/NRT">NRT</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/STN" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/STN">STN</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Business_Class_Seat">
+  <h3>Business Class Seat<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat</p>
+  <div class="comment">
+   <span class="markdown">This class represents a seat in the business class section of an aircraft.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat">Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/BusinessSeat1" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BusinessSeat1">BusinessSeat1</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat">Economy Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/First_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat">First Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/Premium_Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat">Premium Economy Class Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Bussiness">
+  <h3>Bussiness<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Bussiness</p>
+  <div class="comment">
+   <span class="markdown">This class represents travel undertaken for professional or work-related purposes.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Purpose_Of_Travel" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel">Purpose of trave</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure">Leisure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Cabin_Staff_Service_Rating">
+  <h3>Cabin Staff Service Rating<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating</p>
+  <div class="comment">
+   <span class="markdown">This class represents an evaluation score given by a user for the cabin staff service.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/CabinRating7" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/CabinRating7">CabinRating7</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Food_Beverages_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Ground_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Inflight_Entertainment_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Seat_Comfort_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Value_For_Money_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Wifi_Connectivity_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Country">
+  <h3>Country<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Country</p>
+  <div class="comment">
+   <span class="markdown">This class represents a sovereign nation.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/is_living_in" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_living_in">is_living_in</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Couple_Leisure">
+  <h3>Couple Leisure<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure</p>
+  <div class="comment">
+   <span class="markdown">This class represents leisure travel undertaken by a couple.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure">Leisure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Family_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure">Family Leisure</a> <sup class="type-c" title="class">c</sup>, <a href="#/Solo_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure">Solo leisure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Direct_Flight">
+  <h3>Direct Flight<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Direct_Flight</p>
+  <div class="comment">
+   <span class="markdown">This class represents a flight with no stops.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup> <span class="logic">and</span> (<a href="#/has_stopoverAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport">has_stopoverAirport</a> <sup class="type-op" title="object property">op</sup> <span class="logic">exactly</span> 0 <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>)
+   </dd>
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/FR001" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001">FR001</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Economy_Class_Seat">
+  <h3>Economy Class Seat<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat</p>
+  <div class="comment">
+   <span class="markdown">This class represents a seat in the economy class section of an aircraft.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat">Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/EconomySeat2" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/EconomySeat2">EconomySeat2</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Business_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat">Business Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/First_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat">First Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/Premium_Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat">Premium Economy Class Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Family_Leisure">
+  <h3>Family Leisure<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure</p>
+  <div class="comment">
+   <span class="markdown">This class represents leisure travel undertaken by a family group.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure">Leisure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Couple_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure">Couple Leisure</a> <sup class="type-c" title="class">c</sup>, <a href="#/Solo_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure">Solo leisure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/First_Class_Seat">
+  <h3>First Class Seat<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat</p>
+  <div class="comment">
+   <span class="markdown">This class represents a seat in the first class section of an aircraft.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat">Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Business_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat">Business Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat">Economy Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/Premium_Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat">Premium Economy Class Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Flight">
+  <h3>Flight<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight</p>
+  <div class="comment">
+   <span class="markdown">This class represents a specific instance of an airplane traveling between two airports.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#/Direct_Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Direct_Flight">Direct Flight</a> <sup class="type-c" title="class">c</sup>, <a href="#/With_Stopovers_Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/With_Stopovers_Flight">Flight with stopovers</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#/has_airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport">has_airport</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_arrivalAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport">has_arrivalAirport</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_arrivalDate" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate">has_arrivalDate</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#/has_departureAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport">has_departureAirport</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_departureDate" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate">has_departureDate</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#/has_flightNumber" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber">has_flightNumber</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#has_passenger" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#has_passenger">has_passenger</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_provider" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider">has_provider</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_stopoverAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport">has_stopoverAirport</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_vehicle" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle">has_vehicle</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/has_itemReviewed" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed">has_itemReviewed</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_reservation_for" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for">has_reservation_for</a> <sup class="type-op" title="object property">op</sup>, <a href="#is_provider_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_provider_of">is_provider_of</a> <sup class="type-op" title="object property">op</sup>, <a href="#/is_travelling_with" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with">is_travelling_with</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Flight_Reservation">
+  <h3>Flight Reservation<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation</p>
+  <div class="comment">
+   <span class="markdown">This class represents a reservation for a seat on a specific flight.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#/has_purpose" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_purpose">has_purpose</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_reservation_for" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for">has_reservation_for</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_seatReserved" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved">has_seatReserved</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/has_arranged" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged">has_arranged</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/Reservation1" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation1">Reservation1</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/Reservation2" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation2">Reservation2</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/With_Stopovers_Flight">
+  <h3>Flight with stopovers<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/With_Stopovers_Flight</p>
+  <div class="comment">
+   <span class="markdown">This class represents a flight with stops.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup> <span class="logic">and</span> (<a href="#/has_stopoverAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport">has_stopoverAirport</a> <sup class="type-op" title="object property">op</sup> <span class="logic">some</span> <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>)
+   </dd>
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/QR01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01">QR01</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Food_Beverages_Rating">
+  <h3>Food and Beverages Rating<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating</p>
+  <div class="comment">
+   <span class="markdown">This class represents an evaluation score given by a user for the food and beverage.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Ground_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Inflight_Entertainment_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Seat_Comfort_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Value_For_Money_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Wifi_Connectivity_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Ground_Service_Rating">
+  <h3>Ground Service Rating<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating</p>
+  <div class="comment">
+   <span class="markdown">This class represents an evaluation score given by a user for the ground services.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Food_Beverages_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Inflight_Entertainment_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Seat_Comfort_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Value_For_Money_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Wifi_Connectivity_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Inflight_Entertainment_Rating">
+  <h3>Inflight Entertainment Rating<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating</p>
+  <div class="comment">
+   <span class="markdown">This class represents an evaluation score given by a user for the inflight entertainment.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Food_Beverages_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Ground_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Seat_Comfort_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Value_For_Money_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Wifi_Connectivity_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Leisure">
+  <h3>Leisure<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure</p>
+  <div class="comment">
+   <span class="markdown">This class represents travel undertaken for recreational purposes.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Purpose_Of_Travel" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel">Purpose of trave</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#/Couple_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure">Couple Leisure</a> <sup class="type-c" title="class">c</sup>, <a href="#/Family_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure">Family Leisure</a> <sup class="type-c" title="class">c</sup>, <a href="#/Solo_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure">Solo leisure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Bussiness" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Bussiness">Bussiness</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Negative_Review">
+  <h3>Negative Review<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review</p>
+  <div class="comment">
+   <span class="markdown">This class represents a review that expresses a negative sentiment about the flight experience.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Satisfaction_Leveled_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review">Satisfaction Leveled Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Neutral_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review">Neutral Review</a> <sup class="type-c" title="class">c</sup>, <a href="#/Positive_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review">Positive Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Neutral_Review">
+  <h3>Neutral Review<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review</p>
+  <div class="comment">
+   <span class="markdown">This class represents a review that expresses a neutral sentiment about the flight experience.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Satisfaction_Leveled_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review">Satisfaction Leveled Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Negative_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review">Negative Review</a> <sup class="type-c" title="class">c</sup>, <a href="#/Positive_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review">Positive Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Overall_Rating">
+  <h3>Overall Rating<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating</p>
+  <div class="comment">
+   <span class="markdown">This class represents an evaluation score given by a user for the overall flight experience.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/OverallRating4" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating4">OverallRating4</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/OverallRating6" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating6">OverallRating6</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/OverallRating8" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating8">OverallRating8</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Food_Beverages_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Ground_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Inflight_Entertainment_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Seat_Comfort_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Value_For_Money_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Wifi_Connectivity_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Passenger">
+  <h3>Passenger<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Passenger</p>
+  <div class="comment">
+   <span class="markdown">This class represents a person traveling on a flight.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup> <span class="logic">and</span> (<a href="#/is_travelling_with" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with">is_travelling_with</a> <sup class="type-op" title="object property">op</sup> <span class="logic">some</span> <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>)
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Person">
+  <h3>Person<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person</p>
+  <div class="comment">
+   <span class="markdown">This class represents a person.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#/has_arranged" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged">has_arranged</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_personName" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_personName">has_personName</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#/is_author_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of">is_author_of</a> <sup class="type-op" title="object property">op</sup>, <a href="#/is_living_in" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_living_in">is_living_in</a> <sup class="type-op" title="object property">op</sup>, <a href="#/is_travelling_with" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with">is_travelling_with</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/has_author" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author">has_author</a> <sup class="type-op" title="object property">op</sup>, <a href="#has_passenger" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#has_passenger">has_passenger</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/Person01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01">Person1</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/Person02" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person02">Person2</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Positive_Review">
+  <h3>Positive Review<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review</p>
+  <div class="comment">
+   <span class="markdown">This class represents a review that expresses a positive sentiment about the flight experience.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Satisfaction_Leveled_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review">Satisfaction Leveled Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Negative_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review">Negative Review</a> <sup class="type-c" title="class">c</sup>, <a href="#/Neutral_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review">Neutral Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Premium_Economy_Class_Seat">
+  <h3>Premium Economy Class Seat<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat</p>
+  <div class="comment">
+   <span class="markdown">This class represents a seat in the premium economy class section of an aircraft</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat">Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Business_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat">Business Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat">Economy Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/First_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat">First Class Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Purpose_Of_Travel">
+  <h3>Purpose of trave<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel</p>
+  <div class="comment">
+   <span class="markdown">This class represents the overall reason for a passenger's reservation.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#/Bussiness" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Bussiness">Bussiness</a> <sup class="type-c" title="class">c</sup>, <a href="#/Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure">Leisure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/has_purpose" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_purpose">has_purpose</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Rating">
+  <h3>Rating<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating</p>
+  <div class="comment">
+   <span class="markdown">This class represents an evaluation score given by a user.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Food_Beverages_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Ground_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Inflight_Entertainment_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Seat_Comfort_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Value_For_Money_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Wifi_Connectivity_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#/has_ratingValue" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue">has_ratingValue</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/has_rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Review">
+  <h3>Review<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review</p>
+  <div class="comment">
+   <span class="markdown">This class represents a written evaluation of the service.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#/Satisfaction_Leveled_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review">Satisfaction Leveled Review</a> <sup class="type-c" title="class">c</sup>, <a href="#/Verified_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Verified_Review">Verified Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#/has_author" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author">has_author</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_itemReviewed" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed">has_itemReviewed</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_reviewBody" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewBody">has_reviewBody</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#/has_reviewTitle" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewTitle">has_reviewTitle</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/is_author_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of">is_author_of</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#/Review01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review01">Review01</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/Review02" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review02">Review02</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#/Review03" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review03">Review03</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Reviewer">
+  <h3>Reviewer<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reviewer</p>
+  <div class="comment">
+   <span class="markdown">This class represents a person authoring a review.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup> <span class="logic">and</span> (<a href="#/is_author_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of">is_author_of</a> <sup class="type-op" title="object property">op</sup> <span class="logic">some</span> <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>)
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Satisfaction_Leveled_Review">
+  <h3>Satisfaction Leveled Review<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Satisfaction_Leveled_Review</p>
+  <div class="comment">
+   <span class="markdown">This class represents a review with a leveled sentiment about the flight experience.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#/Negative_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review">Negative Review</a> <sup class="type-c" title="class">c</sup>, <a href="#/Neutral_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review">Neutral Review</a> <sup class="type-c" title="class">c</sup>, <a href="#/Positive_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review">Positive Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Seat">
+  <h3>Seat<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat</p>
+  <div class="comment">
+   <span class="markdown">This class represents a specific seat reserverved.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#/Business_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat">Business Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat">Economy Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/First_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/First_Class_Seat">First Class Seat</a> <sup class="type-c" title="class">c</sup>, <a href="#/Premium_Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Premium_Economy_Class_Seat">Premium Economy Class Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#/has_seatReserved" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved">has_seatReserved</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Seat_Comfort_Rating">
+  <h3>Seat Comfort Rating<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating</p>
+  <div class="comment">
+   <span class="markdown">This class represents an evaluation score given by a user for the seat comfort.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Food_Beverages_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Ground_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Inflight_Entertainment_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Value_For_Money_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Wifi_Connectivity_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Solo_Leisure">
+  <h3>Solo leisure<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Solo_Leisure</p>
+  <div class="comment">
+   <span class="markdown">This class represents leisure travel undertaken by a single person.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Leisure">Leisure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Couple_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Couple_Leisure">Couple Leisure</a> <sup class="type-c" title="class">c</sup>, <a href="#/Family_Leisure" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Family_Leisure">Family Leisure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Value_For_Money_Rating">
+  <h3>Value for Money Rating<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating</p>
+  <div class="comment">
+   <span class="markdown">This class represents an evaluation score given by a user for the value for money of the service.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Food_Beverages_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Ground_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Inflight_Entertainment_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Seat_Comfort_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Wifi_Connectivity_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating">Wifi and Connectivity Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Verified_Review">
+  <h3>Verified Review<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Verified_Review</p>
+  <div class="comment">
+   <span class="markdown">This class represents a review that has been verified to be from a legitimate customer who has used the service.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Wifi_Connectivity_Rating">
+  <h3>Wifi and Connectivity Rating<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Wifi_Connectivity_Rating</p>
+  <div class="comment">
+   <span class="markdown">This class represents an evaluation score given by a user for the services aof Wifi and Connectivity.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Food_Beverages_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Food_Beverages_Rating">Food and Beverages Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Ground_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ground_Service_Rating">Ground Service Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Inflight_Entertainment_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Inflight_Entertainment_Rating">Inflight Entertainment Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Seat_Comfort_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat_Comfort_Rating">Seat Comfort Rating</a> <sup class="type-c" title="class">c</sup>, <a href="#/Value_For_Money_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Value_For_Money_Rating">Value for Money Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+ <h3 id="properties" class="list">Object Properties</h3>
+ <ul class="hlist">
+  <li><a href="#/has_airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport">has_airport</a></li>
+  <li><a href="#/has_arranged" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged">has_arranged</a></li>
+  <li><a href="#/has_arrivalAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport">has_arrivalAirport</a></li>
+  <li><a href="#/has_author" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author">has_author</a></li>
+  <li><a href="#/has_departureAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport">has_departureAirport</a></li>
+  <li><a href="#/has_itemReviewed" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed">has_itemReviewed</a></li>
+  <li><a href="#has_passenger" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#has_passenger">has_passenger</a></li>
+  <li><a href="#/has_provider" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider">has_provider</a></li>
+  <li><a href="#/has_purpose" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_purpose">has_purpose</a></li>
+  <li><a href="#/has_rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a></li>
+  <li><a href="#/has_reservation_for" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for">has_reservation_for</a></li>
+  <li><a href="#/has_seatReserved" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved">has_seatReserved</a></li>
+  <li><a href="#/has_stopoverAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport">has_stopoverAirport</a></li>
+  <li><a href="#/has_vehicle" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle">has_vehicle</a></li>
+  <li><a href="#/is_author_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of">is_author_of</a></li>
+  <li><a href="#/is_living_in" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_living_in">is_living_in</a></li>
+  <li><a href="#is_provider_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_provider_of">is_provider_of</a></li>
+  <li><a href="#/is_travelling_with" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with">is_travelling_with</a></li>
+  <li><a href="#is_vehicle_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_vehicle_of">is_vehicle_of</a></li>
+ </ul>
+ <div class="entity" id="/has_airport">
+  <h3>has_airport<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport</p>
+  <div class="comment">
+   <span class="markdown">This property links a flight to an airport.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#/has_arrivalAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport">has_arrivalAirport</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_departureAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport">has_departureAirport</a> <sup class="type-op" title="object property">op</sup>, <a href="#/has_stopoverAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport">has_stopoverAirport</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_arranged">
+  <h3>has_arranged<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged</p>
+  <div class="comment">
+   <span class="markdown">This property links a reservation to the person that arranged it.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> inverse functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Flight_Reservation" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation">Flight Reservation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_arrivalAirport">
+  <h3>has_arrivalAirport<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport</p>
+  <div class="comment">
+   <span class="markdown">This property links a flight to its arrival airport.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#/has_airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport">has_airport</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_author">
+  <h3>has_author<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author</p>
+  <div class="comment">
+   <span class="markdown">This property links a review to the person who wrote it.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#/is_author_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of">is_author_of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_departureAirport">
+  <h3>has_departureAirport<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport</p>
+  <div class="comment">
+   <span class="markdown">This property links a flight to its departure airport.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#/has_airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport">has_airport</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_itemReviewed">
+  <h3>has_itemReviewed<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed</p>
+  <div class="comment">
+   <span class="markdown">This property links a review to the specific flight it evaluates.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="has_passenger">
+  <h3>has_passenger<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#has_passenger</p>
+  <div class="comment">
+   <span class="markdown">This property links a flight to a person through a reservation.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#/is_travelling_with" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with">is_travelling_with</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_provider">
+  <h3>has_provider<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider</p>
+  <div class="comment">
+   <span class="markdown">This property links a flight to the airline that provides the service.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Airline" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline">Airline</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#is_provider_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_provider_of">is_provider_of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_purpose">
+  <h3>has_purpose<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_purpose</p>
+  <div class="comment">
+   <span class="markdown">This property links a flight reservation to the purpose of travel for the passenger.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight_Reservation" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation">Flight Reservation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Purpose_Of_Travel" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Purpose_Of_Travel">Purpose of trave</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_rating">
+  <h3>has_rating<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating</p>
+  <div class="comment">
+   <span class="markdown">This property links a review to its rating for a flight service.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_reservation_for">
+  <h3>has_reservation_for<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for</p>
+  <div class="comment">
+   <span class="markdown">This property links the flight reservation with the flight.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight_Reservation" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation">Flight Reservation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_seatReserved">
+  <h3>has_seatReserved<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved</p>
+  <div class="comment">
+   <span class="markdown">This property links a flight reservation to the seat that is reserved.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight_Reservation" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation">Flight Reservation</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Seat">Seat</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_stopoverAirport">
+  <h3>has_stopoverAirport<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport</p>
+  <div class="comment">
+   <span class="markdown">This property links a flight to any stopover airports it has during the journey.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> asymmetric</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#/has_airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_airport">has_airport</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_vehicle">
+  <h3>has_vehicle<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle</p>
+  <div class="comment">
+   <span class="markdown">This property links a flight with an aircraft</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Aircraft" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft">Aircraft</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#is_vehicle_of" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_vehicle_of">is_vehicle_of</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/is_author_of">
+  <h3>is_author_of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_author_of</p>
+  <div class="comment">
+   <span class="markdown">This property links a person with the review which authored.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#/has_author" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author">has_author</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/is_living_in">
+  <h3>is_living_in<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_living_in</p>
+  <div class="comment">
+   <span class="markdown">This property links a person with its residence country</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional, asymmetric</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Country" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Country">Country</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="is_provider_of">
+  <h3>is_provider_of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_provider_of</p>
+  <div class="comment">
+   <span class="markdown">This property links an airline to the flight it is providing the service.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Airline" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline">Airline</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#/has_provider" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider">has_provider</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/is_travelling_with">
+  <h3>is_travelling_with<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/is_travelling_with</p>
+  <div class="comment">
+   <span class="markdown">This property links a person to a flight through a reservation.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#has_passenger" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#has_passenger">has_passenger</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-property chains
+    </dt>
+    <dd>
+     <a href="#/has_arranged" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged">has_arranged</a> <sup class="type-op" title="object property">op</sup> <span class="logic">o</span> <a href="#/has_reservation_for" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for">has_reservation_for</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="is_vehicle_of">
+  <h3>is_vehicle_of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology#is_vehicle_of</p>
+  <div class="comment">
+   <span class="markdown">This property links an aircraft with a flight.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     is inverse of
+    </dt>
+    <dd>
+     <a href="#/has_vehicle" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle">has_vehicle</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+ <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+ <ul class="hlist">
+  <li><a href="#/has_arrivalDate" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate">has_arrivalDate</a></li>
+  <li><a href="#/has_departureDate" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate">has_departureDate</a></li>
+  <li><a href="#/has_flightNumber" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber">has_flightNumber</a></li>
+  <li><a href="#/has_personName" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_personName">has_personName</a></li>
+  <li><a href="#/has_ratingValue" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue">has_ratingValue</a></li>
+  <li><a href="#/has_reviewBody" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewBody">has_reviewBody</a></li>
+  <li><a href="#/has_reviewTitle" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewTitle">has_reviewTitle</a></li>
+ </ul>
+ <div class="entity" id="/has_arrivalDate">
+  <h3>has_arrivalDate<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate</p>
+  <div class="comment">
+   <span class="markdown">This property represents the scheduled arrival date of a flight.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#dateTime" target="_blank" title="http://www.w3.org/2001/XMLSchema#dateTime">date Time</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_departureDate">
+  <h3>has_departureDate<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate</p>
+  <div class="comment">
+   <span class="markdown">This property represents the scheduled departure date of a flight.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#dateTime" target="_blank" title="http://www.w3.org/2001/XMLSchema#dateTime">date Time</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_flightNumber">
+  <h3>has_flightNumber<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber</p>
+  <div class="comment">
+   <span class="markdown">This property represents the unique identifier of a flight.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight">Flight</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_personName">
+  <h3>has_personName<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_personName</p>
+  <div class="comment">
+   <span class="markdown">This property represents a person name.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_ratingValue">
+  <h3>has_ratingValue<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue</p>
+  <div class="comment">
+   <span class="markdown">This property represents the numerical value of the rating for a certain sevice.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Rating">Rating</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_reviewBody">
+  <h3>has_reviewBody<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewBody</p>
+  <div class="comment">
+   <span class="markdown">This property represents the text content of the review body.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="/has_reviewTitle">
+  <h3>has_reviewTitle<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reviewTitle</p>
+  <div class="comment">
+   <span class="markdown">This property represents the title of the review.</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> functional</p>
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="annotationproperties">
+ <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+ <ul class="hlist">
+  <li><a href="#http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled" title="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"> <span>is Rule Enabled</span> </a></li>
+  <li><a href="#http://www.w3.org/2000/01/rdf-schema#sameAs" title="http://www.w3.org/2000/01/rdf-schema#sameAs"> <span>same As</span> </a></li>
+ </ul>
+ <div class="entity" id="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled">
+  <h3>is Rule Enabled<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled</p>
+ </div>
+ <div class="entity" id="http://www.w3.org/2000/01/rdf-schema#sameAs">
+  <h3>same As<sup class="type-ap" title="annotation property">ap</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.w3.org/2000/01/rdf-schema#sameAs</p>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+ <h3 id="namedindividuals" class="list">Named Individuals</h3>
+ <ul class="hlist">
+  <li><a href="#/BCN" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BCN">BCN</a></li>
+  <li><a href="#/Boeing_737" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_737">Boeing_737</a></li>
+  <li><a href="#/Boeing_777" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_777">Boeing_777</a></li>
+  <li><a href="#/BusinessSeat1" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BusinessSeat1">BusinessSeat1</a></li>
+  <li><a href="#/CabinRating7" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/CabinRating7">CabinRating7</a></li>
+  <li><a href="#/DOH" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/DOH">DOH</a></li>
+  <li><a href="#/EconomySeat2" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/EconomySeat2">EconomySeat2</a></li>
+  <li><a href="#/FR001" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001">FR001</a></li>
+  <li><a href="#/LHR" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/LHR">LHR</a></li>
+  <li><a href="#/NRT" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/NRT">NRT</a></li>
+  <li><a href="#/OverallRating4" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating4">OverallRating4</a></li>
+  <li><a href="#/OverallRating6" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating6">OverallRating6</a></li>
+  <li><a href="#/OverallRating8" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating8">OverallRating8</a></li>
+  <li><a href="#/Person01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01">Person1</a></li>
+  <li><a href="#/Person02" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person02">Person2</a></li>
+  <li><a href="#/Qatar_Airlines" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Qatar_Airlines">Qatar_Airlines</a></li>
+  <li><a href="#/QR01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01">QR01</a></li>
+  <li><a href="#/Reservation1" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation1">Reservation1</a></li>
+  <li><a href="#/Reservation2" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation2">Reservation2</a></li>
+  <li><a href="#/Review01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review01">Review01</a></li>
+  <li><a href="#/Review02" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review02">Review02</a></li>
+  <li><a href="#/Review03" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review03">Review03</a></li>
+  <li><a href="#/Ryanair" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ryanair">Ryanair</a></li>
+  <li><a href="#/STN" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/STN">STN</a></li>
+ </ul>
+ <div class="entity" id="/BCN">
+  <h3>BCN<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BCN</p>
+  <div class="comment">
+   <span class="markdown">Barcelona Airport</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Boeing_737">
+  <h3>Boeing_737<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_737</p>
+  <div class="comment">
+   <span class="markdown">Boeing 737 model aircraft</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Aircraft" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft">Aircraft</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Boeing_777">
+  <h3>Boeing_777<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_777</p>
+  <div class="comment">
+   <span class="markdown">Boeing 777 aircraft</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Aircraft" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Aircraft">Aircraft</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/BusinessSeat1">
+  <h3>BusinessSeat1<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BusinessSeat1</p>
+  <div class="comment">
+   <span class="markdown">Business Class Seat instance</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Business_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Business_Class_Seat">Business Class Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/CabinRating7">
+  <h3>CabinRating7<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/CabinRating7</p>
+  <div class="comment">
+   <span class="markdown">Cabin rating with value 7</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Cabin_Staff_Service_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Cabin_Staff_Service_Rating">Cabin Staff Service Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/DOH">
+  <h3>DOH<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/DOH</p>
+  <div class="comment">
+   <span class="markdown">Doha Airport</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/EconomySeat2">
+  <h3>EconomySeat2<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/EconomySeat2</p>
+  <div class="comment">
+   <span class="markdown">Economy class seat</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Economy_Class_Seat" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Economy_Class_Seat">Economy Class Seat</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/FR001">
+  <h3>FR001<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001</p>
+  <div class="comment">
+   <span class="markdown">Flight operated by Ryanair from London Stansted to Barcelona on 23/11/2023</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Direct_Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Direct_Flight">Direct Flight</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_arrivalAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport">has_arrivalAirport</a> <sup class="type-op" title="object property">op</sup> <a href="#/BCN" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BCN">BCN</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_departureAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport">has_departureAirport</a> <sup class="type-op" title="object property">op</sup> <a href="#/STN" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/STN">STN</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_provider" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider">has_provider</a> <sup class="type-op" title="object property">op</sup> <a href="#/Ryanair" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ryanair">Ryanair</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_vehicle" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle">has_vehicle</a> <sup class="type-op" title="object property">op</sup> <a href="#/Boeing_737" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_737">Boeing_737</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_arrivalDate" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate">has_arrivalDate</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"2023-11-23T11:00:00"^^<a href="http://www.w3.org/2001/XMLSchema#dateTime" target="_blank" title="http://www.w3.org/2001/XMLSchema#dateTime">date Time</a> </span>
+   </dd>
+   <dd>
+    <a href="#/has_departureDate" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate">has_departureDate</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"2023-11-23T07:00:00"^^<a href="http://www.w3.org/2001/XMLSchema#dateTime" target="_blank" title="http://www.w3.org/2001/XMLSchema#dateTime">date Time</a> </span>
+   </dd>
+   <dd>
+    <a href="#/has_flightNumber" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber">has_flightNumber</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"FR001"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/LHR">
+  <h3>LHR<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/LHR</p>
+  <div class="comment">
+   <span class="markdown">London Heathrow Airport</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/NRT">
+  <h3>NRT<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/NRT</p>
+  <div class="comment">
+   <span class="markdown">Tokyo Narita Airport</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/OverallRating4">
+  <h3>OverallRating4<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating4</p>
+  <div class="comment">
+   <span class="markdown">Overall rating with value 4</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_ratingValue" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue">has_ratingValue</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"4"^^<a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a> </span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/OverallRating6">
+  <h3>OverallRating6<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating6</p>
+  <div class="comment">
+   <span class="markdown">Overall rating with value 6</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_ratingValue" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue">has_ratingValue</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"6"^^<a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a> </span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/OverallRating8">
+  <h3>OverallRating8<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating8</p>
+  <div class="comment">
+   <span class="markdown">Overall rating with value 8</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_ratingValue" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue">has_ratingValue</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"8"^^<a href="http://www.w3.org/2001/XMLSchema#integer" target="_blank" title="http://www.w3.org/2001/XMLSchema#integer">integer</a> </span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Person01">
+  <h3>Person1<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01</p>
+  <div class="comment">
+   <span class="markdown">John Doe</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_arranged" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged">has_arranged</a> <sup class="type-op" title="object property">op</sup> <a href="#/Reservation1" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation1">Reservation1</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_arranged" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged">has_arranged</a> <sup class="type-op" title="object property">op</sup> <a href="#/Reservation2" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation2">Reservation2</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_personName" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_personName">has_personName</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"John Doe"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Person02">
+  <h3>Person2<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person02</p>
+  <div class="comment">
+   <span class="markdown">Helen Smith</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Person" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person">Person</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_personName" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_personName">has_personName</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"Helen Smith"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Qatar_Airlines">
+  <h3>Qatar_Airlines<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Qatar_Airlines</p>
+  <div class="comment">
+   <span class="markdown">Qatar Airlines with base in Doha</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Airline" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline">Airline</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/QR01">
+  <h3>QR01<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01</p>
+  <div class="comment">
+   <span class="markdown">Flight operated by Qatar Airlines on 23/10/2023 from London Heathrow to Tokyo Narita via Doha</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/With_Stopovers_Flight" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/With_Stopovers_Flight">Flight with stopovers</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_arrivalAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalAirport">has_arrivalAirport</a> <sup class="type-op" title="object property">op</sup> <a href="#/NRT" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/NRT">NRT</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_departureAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureAirport">has_departureAirport</a> <sup class="type-op" title="object property">op</sup> <a href="#/LHR" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/LHR">LHR</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_provider" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_provider">has_provider</a> <sup class="type-op" title="object property">op</sup> <a href="#/Qatar_Airlines" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Qatar_Airlines">Qatar_Airlines</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_stopoverAirport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_stopoverAirport">has_stopoverAirport</a> <sup class="type-op" title="object property">op</sup> <a href="#/DOH" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/DOH">DOH</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_vehicle" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_vehicle">has_vehicle</a> <sup class="type-op" title="object property">op</sup> <a href="#/Boeing_777" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Boeing_777">Boeing_777</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_arrivalDate" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arrivalDate">has_arrivalDate</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"2023-10-24T02:00:00"^^<a href="http://www.w3.org/2001/XMLSchema#dateTime" target="_blank" title="http://www.w3.org/2001/XMLSchema#dateTime">date Time</a> </span>
+   </dd>
+   <dd>
+    <a href="#/has_departureDate" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_departureDate">has_departureDate</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"2023-10-23T08:00:00"^^<a href="http://www.w3.org/2001/XMLSchema#dateTime" target="_blank" title="http://www.w3.org/2001/XMLSchema#dateTime">date Time</a> </span>
+   </dd>
+   <dd>
+    <a href="#/has_flightNumber" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_flightNumber">has_flightNumber</a> <sup class="type-dp" title="data property">dp</sup> <span class="literal">"QA01"</span>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Reservation1">
+  <h3>Reservation1<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation1</p>
+  <div class="comment">
+   <span class="markdown">Flight reservation made by John Doe for the flight QR01 in Business Class</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Flight_Reservation" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation">Flight Reservation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_reservation_for" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for">has_reservation_for</a> <sup class="type-op" title="object property">op</sup> <a href="#/QR01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01">QR01</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_seatReserved" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved">has_seatReserved</a> <sup class="type-op" title="object property">op</sup> <a href="#/BusinessSeat1" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/BusinessSeat1">BusinessSeat1</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Reservation2">
+  <h3>Reservation2<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Reservation2</p>
+  <div class="comment">
+   <span class="markdown">Flight reservation made by John Doe for the Flight FR001 in Economy class</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Flight_Reservation" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Flight_Reservation">Flight Reservation</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_reservation_for" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for">has_reservation_for</a> <sup class="type-op" title="object property">op</sup> <a href="#/FR001" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001">FR001</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_seatReserved" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_seatReserved">has_seatReserved</a> <sup class="type-op" title="object property">op</sup> <a href="#/EconomySeat2" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/EconomySeat2">EconomySeat2</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Review01">
+  <h3>Review01<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review01</p>
+  <div class="comment">
+   <span class="markdown">Review authored by John Doe regarding the flight FR001</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_author" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author">has_author</a> <sup class="type-op" title="object property">op</sup> <a href="#/Person01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01">Person1</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_itemReviewed" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed">has_itemReviewed</a> <sup class="type-op" title="object property">op</sup> <a href="#/FR001" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001">FR001</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a> <sup class="type-op" title="object property">op</sup> <a href="#/OverallRating8" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating8">OverallRating8</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Review02">
+  <h3>Review02<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review02</p>
+  <div class="comment">
+   <span class="markdown">Review made by John Doew valuing the flight QR01</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_author" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author">has_author</a> <sup class="type-op" title="object property">op</sup> <a href="#/Person01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person01">Person1</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_itemReviewed" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed">has_itemReviewed</a> <sup class="type-op" title="object property">op</sup> <a href="#/QR01" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/QR01">QR01</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a> <sup class="type-op" title="object property">op</sup> <a href="#/OverallRating4" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating4">OverallRating4</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Review03">
+  <h3>Review03<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review03</p>
+  <div class="comment">
+   <span class="markdown">Review authored by John Doe regarding the flight QR001</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has facts
+   </dt>
+   <dd>
+    <a href="#/has_author" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author">has_author</a> <sup class="type-op" title="object property">op</sup> <a href="#/Person02" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Person02">Person2</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_itemReviewed" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed">has_itemReviewed</a> <sup class="type-op" title="object property">op</sup> <a href="#/FR001" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/FR001">FR001</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+   <dd>
+    <a href="#/has_rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a> <sup class="type-op" title="object property">op</sup> <a href="#/OverallRating6" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/OverallRating6">OverallRating6</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/Ryanair">
+  <h3>Ryanair<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Ryanair</p>
+  <div class="comment">
+   <span class="markdown">Ryanair airline based in Dublin</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Airline" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airline">Airline</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="/STN">
+  <h3>STN<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/STN</p>
+  <div class="comment">
+   <span class="markdown">London Stansted Airport</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#/Airport" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Airport">Airport</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="swrlrules">
+ <h3 id="swrlrules" class="list">SWRL rules</h3>
+ <ul class="hlist">
+  <li><a href="#d4e1831">NegativReview</a></li>
+  <li><a href="#d4e2159">NeutralReview</a></li>
+  <li><a href="#d4e1995">PositiveReview</a></li>
+  <li><a href="#d4e1684">VerifiedReview</a></li>
+ </ul>
+ <div class="entity" id="d4e1831">
+  <h3>NegativReview<span class="backlink">back to <a href="#toc">ToC</a> or <a href="#swrlrules">SWRL ToC</a> </span></h3>
+  <p>A review is negative when the overall rating is smaller than 5<br><br><a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>(?r) , <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>(?ov) , <a href="#/has_rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a> <sup class="type-op" title="object property">op</sup>(?r,?ov) , <a href="#/has_ratingValue" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue">has_ratingValue</a> <sup class="type-dp" title="data property">dp</sup>(?ov,?v) , <a href="http://www.w3.org/2003/11/swrlb#lessThan" title="lessThan">lessThan</a>(?) -&gt; <a href="#/Negative_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Negative_Review">Negative Review</a> <sup class="type-c" title="class">c</sup>(?r)</p>
+ </div>
+ <div class="entity" id="d4e2159">
+  <h3>NeutralReview<span class="backlink">back to <a href="#toc">ToC</a> or <a href="#swrlrules">SWRL ToC</a> </span></h3>
+  <p>A review is neutral when the overall rating is greater or equal 5 and less or equal 7<br><br><a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>(?r) , <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>(?ov) , <a href="#/has_rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a> <sup class="type-op" title="object property">op</sup>(?r,?ov) , <a href="#/has_ratingValue" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue">has_ratingValue</a> <sup class="type-dp" title="data property">dp</sup>(?ov,?v) , <a href="http://www.w3.org/2003/11/swrlb#lessThanOrEqual" title="lessThanOrEqual">lessThanOrEqual</a>(?) , <a href="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual" title="greaterThanOrEqual">greaterThanOrEqual</a>(?) -&gt; <a href="#/Neutral_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Neutral_Review">Neutral Review</a> <sup class="type-c" title="class">c</sup>(?r)</p>
+ </div>
+ <div class="entity" id="d4e1995">
+  <h3>PositiveReview<span class="backlink">back to <a href="#toc">ToC</a> or <a href="#swrlrules">SWRL ToC</a> </span></h3>
+  <p>A review is positive whe the overall rating is greater than 7<br><br><a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>(?r) , <a href="#/Overall_Rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Overall_Rating">Overall Rating</a> <sup class="type-c" title="class">c</sup>(?ov) , <a href="#/has_rating" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_rating">has_rating</a> <sup class="type-op" title="object property">op</sup>(?r,?ov) , <a href="#/has_ratingValue" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_ratingValue">has_ratingValue</a> <sup class="type-dp" title="data property">dp</sup>(?ov,?v) , <a href="http://www.w3.org/2003/11/swrlb#greaterThan" title="greaterThan">greaterThan</a>(?) -&gt; <a href="#/Positive_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Positive_Review">Positive Review</a> <sup class="type-c" title="class">c</sup>(?r)</p>
+ </div>
+ <div class="entity" id="d4e1684">
+  <h3>VerifiedReview<span class="backlink">back to <a href="#toc">ToC</a> or <a href="#swrlrules">SWRL ToC</a> </span></h3>
+  <p>A Review is verified if their authors were actually passengers of the flight, therfore the author has to have a booking.<br><br><a href="#/Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Review">Review</a> <sup class="type-c" title="class">c</sup>(?) , <a href="#/has_itemReviewed" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_itemReviewed">has_itemReviewed</a> <sup class="type-op" title="object property">op</sup>(?,?) , <a href="#/has_author" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_author">has_author</a> <sup class="type-op" title="object property">op</sup>(?,?) , <a href="#/has_arranged" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_arranged">has_arranged</a> <sup class="type-op" title="object property">op</sup>(?,?) , <a href="#/has_reservation_for" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/has_reservation_for">has_reservation_for</a> <sup class="type-op" title="object property">op</sup>(?,?) -&gt; <a href="#/Verified_Review" title="http://www.semanticweb.org/sergirodrigo/ontologies/2024/FlightSatisfactionSurveyOntology/Verified_Review">Verified Review</a> <sup class="type-c" title="class">c</sup>(?)</p>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+</div>
+</div>
+</div>
+    
+
+<!--REFERENCES SECTION-->
+  <div id="references">
+<h2 id="ref" class="list">References <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+Add your references here. It is recommended to have them as a list.</span>
+
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>
